@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.bkr.models.DailyDetail;
 import org.bkr.models.DailyHeader;
+import org.bkr.models.TemplateDetail;
 
 public class DailyHeaderBuilder {
 
@@ -20,6 +21,7 @@ public class DailyHeaderBuilder {
 	public InternalDailyDetailBuilder detailBuilder()
 	{
 		iddb= new InternalDailyDetailBuilder(this);
+		
 		return iddb;
 	}
 	
@@ -29,6 +31,7 @@ public class DailyHeaderBuilder {
 		dh.setDailyDetailses(iddb.getList());
 		return dh;
 	}
+	
 	
 	public class InternalDailyDetailBuilder
 	{
@@ -42,17 +45,24 @@ public class DailyHeaderBuilder {
 		
 		public InternalDailyDetailBuilder add(int beginningInv, int production, int endingInv, int tgafs, int sales, long amount)
 		{
-			ddb.add(beginningInv, production, endingInv, tgafs, sales, amount);
+			DailyDetail detail=new DailyDetail(beginningInv, production, endingInv, tgafs, sales, amount);
+			details.add(detail);
+			return this;
+		}
+		
+		public InternalDailyDetailBuilder add(TemplateDetail td,int beginningInv, int production, int endingInv, int tgafs, int sales, long amount)
+		{
+			DailyDetail detail=new DailyDetail(dh,td,beginningInv, production, endingInv, tgafs, sales, amount);
+			details.add(detail);
 			return this;
 		}
 		
 		public DailyHeaderBuilder build()
 		{
-			details.addAll(ddb.build());
 			return dhb;
 		}
 		
-		public Set<DailyDetail> getList()
+		protected Set<DailyDetail> getList()
 		{
 			return details;
 		}

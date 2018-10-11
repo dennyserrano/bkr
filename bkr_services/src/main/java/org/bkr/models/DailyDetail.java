@@ -20,7 +20,7 @@ public class DailyDetail implements java.io.Serializable {
 
 	private Long id;
 	private DailyHeader dailyHeader;
-	private TemplateDetail templateDetails;
+	private TemplateDetail templateDetail;
 	private int beginningInv;
 	private int production;
 	private int endingInv;
@@ -43,7 +43,7 @@ public class DailyDetail implements java.io.Serializable {
 	public DailyDetail(DailyHeader dailyHeader, TemplateDetail templateDetails, int beginningInv, int production,
 			int endingInv, int tgafs, int sales, long amount) {
 		this.dailyHeader = dailyHeader;
-		this.templateDetails = templateDetails;
+		this.templateDetail = templateDetails;
 		this.beginningInv = beginningInv;
 		this.production = production;
 		this.endingInv = endingInv;
@@ -77,11 +77,11 @@ public class DailyDetail implements java.io.Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 //	@JoinColumn(name = "template_detail_id")
 	public TemplateDetail getTemplateDetails() {
-		return this.templateDetails;
+		return this.templateDetail;
 	}
 
 	public void setTemplateDetails(TemplateDetail templateDetails) {
-		this.templateDetails = templateDetails;
+		this.templateDetail = templateDetails;
 	}
 
 	@Column(name = "beginning_inv", nullable = false)

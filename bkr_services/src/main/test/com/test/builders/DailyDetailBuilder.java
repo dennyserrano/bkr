@@ -11,7 +11,7 @@ public class DailyDetailBuilder {
 	
 	
 	
-	public DailyDetailBuilder add(int beginningInv, int production, int endingInv, int tgafs, int sales, long amount)
+	public DailyDetailBuilder create(int beginningInv, int production, int endingInv, int tgafs, int sales, long amount)
 	{
 		details.add(new DailyDetail(beginningInv, production, endingInv, tgafs, sales, amount));
 		return this;

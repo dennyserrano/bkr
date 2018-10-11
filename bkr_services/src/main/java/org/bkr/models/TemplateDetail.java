@@ -45,7 +45,7 @@ public class TemplateDetail implements java.io.Serializable {
 
 	@EmbeddedId
 
-	@AttributeOverrides({ @AttributeOverride(name = "id", column = @Column(name = "id", nullable = false)),
+	@AttributeOverrides({
 			@AttributeOverride(name = "templateId", column = @Column(name = "template_id", nullable = false)),
 			@AttributeOverride(name = "masterBreadId", column = @Column(name = "master_bread_id", nullable = false)) })
 	public TemplateDetailsId getId() {
@@ -68,12 +68,12 @@ public class TemplateDetail implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "template_id", nullable = false, insertable = false, updatable = false)
-	public Template getTemplates() {
+	public Template getTemplate() {
 		return this.template;
 	}
 
-	public void setTemplates(Template templates) {
-		this.template = templates;
+	public void setTemplate(Template template) {
+		this.template = template;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "templateDetails")

@@ -5,7 +5,7 @@ import org.bkr.models.TemplateDetail;
 
 public class MasterBreadListBuilder {
 
-	public MasterBreadList create(String breadName,Long price)
+	public MasterBreadList create(Long id,String breadName,Long price)
 	{
 		return new MasterBreadList(breadName, price);
 	}

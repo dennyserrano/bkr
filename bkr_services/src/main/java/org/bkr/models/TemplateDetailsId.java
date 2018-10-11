@@ -10,26 +10,15 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class TemplateDetailsId implements java.io.Serializable {
 
-	private long id;
 	private long templateId;
 	private long masterBreadId;
 
 	public TemplateDetailsId() {
 	}
 
-	public TemplateDetailsId(long id, long templateId, long masterBreadId) {
-		this.id = id;
+	public TemplateDetailsId(long templateId, long masterBreadId) {
 		this.templateId = templateId;
 		this.masterBreadId = masterBreadId;
-	}
-
-	@Column(name = "id", nullable = false)
-	public long getId() {
-		return this.id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	@Column(name = "template_id", nullable = false)
@@ -59,14 +48,12 @@ public class TemplateDetailsId implements java.io.Serializable {
 			return false;
 		TemplateDetailsId castOther = (TemplateDetailsId) other;
 
-		return (this.getId() == castOther.getId()) && (this.getTemplateId() == castOther.getTemplateId())
+		return (this.getTemplateId() == castOther.getTemplateId())
 				&& (this.getMasterBreadId() == castOther.getMasterBreadId());
 	}
 
 	public int hashCode() {
 		int result = 17;
-
-		result = 37 * result + (int) this.getId();
 		result = 37 * result + (int) this.getTemplateId();
 		result = 37 * result + (int) this.getMasterBreadId();
 		return result;

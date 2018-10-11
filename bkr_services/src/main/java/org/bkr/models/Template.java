@@ -52,13 +52,13 @@ public class Template implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "templates")
-	public Set<TemplateDetail> getTemplateDetailses() {
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "template")
+	public Set<TemplateDetail> getTemplateDetails() {
 		return this.templateDetails;
 	}
 
-	public void setTemplateDetailses(Set<TemplateDetail> templateDetailses) {
-		this.templateDetails = templateDetailses;
+	public void setTemplateDetails(Set<TemplateDetail> templateDetails) {
+		this.templateDetails = templateDetails;
 	}
 
 }

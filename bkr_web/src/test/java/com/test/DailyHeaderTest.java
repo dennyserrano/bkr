@@ -1,5 +1,6 @@
 package com.test;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -31,36 +32,34 @@ public class DailyHeaderTest {
 	
 	@Autowired TemplateService ts;
 	
-	@Autowired MasterBreadListRepository mbr;
 	
 	@Autowired DailyHeaderService dhs;
 	
 	@Test
 	public void t1()
 	{
-		
-		MasterBreadList mbl1=new MasterBreadListBuilder().create(null, "b1", 1L);
-		mbr.save(mbl1);
-		Template t=new TemplateBuilder()
-		.create("t1")
-		.addDetail(new TemplateDetailsId(1, mbl1.getId()), mbl1)
-		.build();
-		
-		ts.save(t);
-		
-		TemplateDetail td= new ArrayList<TemplateDetail>(t.getTemplateDetails()).get(0);
-		
-		
-		
-		
-		DailyHeader dh=new DailyHeaderBuilder()
-		.create(new Date())
-		.detailBuilder()
-		.add(td, 1, 2, 3, 4, 5, 6)
-		.build()
-		.build();
-		
-		dhs.save(dh);
+		System.out.println("hello");
+//		Template t=new TemplateBuilder()
+//		.create("t1")
+//		.addDetail(new TemplateDetailsId(1, mbl1.getId()), mbl1)
+//		.addDetail(new TemplateDetailsId(1, mbl2.getId()), mbl2)
+//		.build();
+//		
+//		ts.save(t);
+//		
+//		TemplateDetail td1= new ArrayList<TemplateDetail>(t.getTemplateDetails()).get(0);
+//		TemplateDetail td2= new ArrayList<TemplateDetail>(t.getTemplateDetails()).get(1);
+//		
+//		
+//		DailyHeader dh=new DailyHeaderBuilder()
+//		.create(new Date())
+//		.detailBuilder()
+//		.add(td1, 1, 2, 3, 4, 5, BigDecimal.valueOf(6.2),"AM")
+//		.add(td2, 1, 2, 3, 4, 5,  BigDecimal.valueOf(6.5),"PM")
+//		.build()
+//		.build();
+//		
+//		dhs.save(dh);
 		
 	}
 	

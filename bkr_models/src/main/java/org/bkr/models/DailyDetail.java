@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
+
+import java.math.BigDecimal;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,22 +29,24 @@ public class DailyDetail implements java.io.Serializable {
 	private int endingInv;
 	private int tgafs;
 	private int sales;
-	private long amount;
-
+	private BigDecimal amount;
+	private String category;
+	
 	public DailyDetail() {
 	}
 
-	public DailyDetail(int beginningInv, int production, int endingInv, int tgafs, int sales, long amount) {
+	public DailyDetail(int beginningInv, int production, int endingInv, int tgafs, int sales, BigDecimal amount,String category) {
 		this.beginningInv = beginningInv;
 		this.production = production;
 		this.endingInv = endingInv;
 		this.tgafs = tgafs;
 		this.sales = sales;
 		this.amount = amount;
+		this.category=category;
 	}
 
 	public DailyDetail(DailyHeader dailyHeader, TemplateDetail templateDetails, int beginningInv, int production,
-			int endingInv, int tgafs, int sales, long amount) {
+			int endingInv, int tgafs, int sales, BigDecimal amount,String category) {
 		this.dailyHeader = dailyHeader;
 		this.templateDetail = templateDetails;
 		this.beginningInv = beginningInv;
@@ -50,6 +55,7 @@ public class DailyDetail implements java.io.Serializable {
 		this.tgafs = tgafs;
 		this.sales = sales;
 		this.amount = amount;
+		this.category=category;
 	}
 
 	@Id
@@ -129,13 +135,24 @@ public class DailyDetail implements java.io.Serializable {
 		this.sales = sales;
 	}
 
-	@Column(name = "amount", nullable = false, precision = 10, scale = 0)
-	public long getAmount() {
+	@Column(name = "amount", nullable = false, precision = 10, scale = 2)
+	public BigDecimal getAmount() {
 		return this.amount;
 	}
 
-	public void setAmount(long amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 
+	@Column(name = "category", length = 45)
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	
+	
 }

@@ -1,5 +1,6 @@
 package com.test.builders;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +16,11 @@ public class DailyHeaderBuilder {
 	public DailyHeaderBuilder create(Date date)
 	{
 		dh= new DailyHeader(date);
+		dh.setDifference(BigDecimal.ZERO);
+		dh.setExpenses(BigDecimal.ZERO);
+		dh.setGrandTotal(BigDecimal.ZERO);
+		dh.setRemittance(BigDecimal.ZERO);
+		dh.setTotal(BigDecimal.ZERO);
 		return this;
 	}
 	
@@ -43,16 +49,16 @@ public class DailyHeaderBuilder {
 			this.dhb=dhb;
 		}
 		
-		public InternalDailyDetailBuilder add(int beginningInv, int production, int endingInv, int tgafs, int sales, long amount)
+		public InternalDailyDetailBuilder add(int beginningInv, int production, int endingInv, int tgafs, int sales, BigDecimal amount,String category)
 		{
-			DailyDetail detail=new DailyDetail(beginningInv, production, endingInv, tgafs, sales, amount);
+			DailyDetail detail=new DailyDetail(beginningInv, production, endingInv, tgafs, sales, amount,category);
 			details.add(detail);
 			return this;
 		}
 		
-		public InternalDailyDetailBuilder add(TemplateDetail td,int beginningInv, int production, int endingInv, int tgafs, int sales, long amount)
+		public InternalDailyDetailBuilder add(TemplateDetail td,int beginningInv, int production, int endingInv, int tgafs, int sales, BigDecimal amount,String category)
 		{
-			DailyDetail detail=new DailyDetail(dh,td,beginningInv, production, endingInv, tgafs, sales, amount);
+			DailyDetail detail=new DailyDetail(dh,td,beginningInv, production, endingInv, tgafs, sales, amount,category);
 			details.add(detail);
 			return this;
 		}

@@ -1,5 +1,6 @@
 package org.bkr.services;
 
+import java.util.List;
 import java.util.Set;
 
 import org.bkr.models.TemplateDetail;
@@ -25,6 +26,12 @@ public class TemplateDetailServiceImpl implements TemplateDetailService {
 		tdr.saveAll(s);
 		
 		return s;
+	}
+
+	@Override
+	public List<TemplateDetail> findByTemplateId(long templateId) {
+		
+		return tdr.findIdByTemplateId(templateId);
 	}
 
 }

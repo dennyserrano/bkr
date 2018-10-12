@@ -37,6 +37,13 @@ public class MasterBreadList implements java.io.Serializable {
 		this.breadName = breadName;
 		this.price = price;
 	}
+	
+	public MasterBreadList(Long id,String breadName, Long price) {
+		this.breadName = breadName;
+		this.price = price;
+		this.id=id;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 

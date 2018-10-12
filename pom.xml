@@ -18,6 +18,8 @@
 
 	<modules>
 		<module>bkr_services</module>
+		<module>bkr_models</module>
+		<module>bkr_web</module>
 	</modules>
 
 	

@@ -1,6 +1,7 @@
 package org.bkr.models;
 // Generated 09 26, 18 5:30:50 PM by Hibernate Tools 5.2.11.Final
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,6 +25,11 @@ public class DailyHeader implements java.io.Serializable {
 
 	private Long id;
 	private Date date;
+	private BigDecimal total;
+	private BigDecimal expenses;
+	private BigDecimal grandTotal;
+	private BigDecimal remittance;
+	private BigDecimal difference;
 	private Set<DailyDetail> dailyDetails = new HashSet<>();
 
 	public DailyHeader() {
@@ -67,5 +73,53 @@ public class DailyHeader implements java.io.Serializable {
 	public void setDailyDetailses(Set<DailyDetail> dailyDetailses) {
 		this.dailyDetails = dailyDetailses;
 	}
+
+	@Column(name = "total", nullable = false, precision = 10, scale = 2)
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+
+	@Column(name = "expenses", nullable = false, precision = 10, scale = 2)
+	public BigDecimal getExpenses() {
+		return expenses;
+	}
+
+	public void setExpenses(BigDecimal expenses) {
+		this.expenses = expenses;
+	}
+
+	@Column(name = "grand_total", nullable = false, precision = 10, scale = 2)
+	public BigDecimal getGrandTotal() {
+		return grandTotal;
+	}
+
+	public void setGrandTotal(BigDecimal grandTotal) {
+		this.grandTotal = grandTotal;
+	}
+
+	@Column(name = "remittance", nullable = false, precision = 10, scale = 2)
+	public BigDecimal getRemittance() {
+		return remittance;
+	}
+
+	public void setRemittance(BigDecimal remittance) {
+		this.remittance = remittance;
+	}
+
+	@Column(name = "difference", nullable = false, precision = 10, scale = 2)
+	public BigDecimal getDifference() {
+		return difference;
+	}
+
+	public void setDifference(BigDecimal difference) {
+		this.difference = difference;
+	}
+	
+	
+	
 
 }

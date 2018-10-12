@@ -1,5 +1,6 @@
 package com.test.builders;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,9 +12,9 @@ public class DailyDetailBuilder {
 	
 	
 	
-	public DailyDetailBuilder create(int beginningInv, int production, int endingInv, int tgafs, int sales, long amount)
+	public DailyDetailBuilder create(int beginningInv, int production, int endingInv, int tgafs, int sales, BigDecimal amount,String category)
 	{
-		details.add(new DailyDetail(beginningInv, production, endingInv, tgafs, sales, amount));
+		details.add(new DailyDetail(beginningInv, production, endingInv, tgafs, sales, amount,category));
 		return this;
 	}
 	

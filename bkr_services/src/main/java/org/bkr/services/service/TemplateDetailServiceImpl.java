@@ -1,11 +1,11 @@
-package org.bkr.services;
+package org.bkr.services.service;
 
 import java.util.List;
 import java.util.Set;
 
 import org.bkr.models.TemplateDetail;
-import org.bkr.repo.TemplateDetailRepository;
-import org.bkr.services.interfaces.TemplateDetailService;
+import org.bkr.services.repo.TemplateDetailRepository;
+import org.bkr.services.service.interfaces.TemplateDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

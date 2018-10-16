@@ -3,6 +3,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import org.bkr.conf.Conf;
@@ -11,10 +12,14 @@ import org.bkr.models.MasterBreadList;
 import org.bkr.models.Template;
 import org.bkr.models.TemplateDetail;
 import org.bkr.models.TemplateDetailsId;
-import org.bkr.services.interfaces.DailyHeaderService;
-import org.bkr.services.interfaces.MasterBreadListService;
-import org.bkr.services.interfaces.TemplateDetailService;
-import org.bkr.services.interfaces.TemplateService;
+import org.bkr.services.factories.DHeaderFactory;
+import org.bkr.services.factories.DailyHeaderFactory;
+import org.bkr.services.service.interfaces.DailyHeaderService;
+import org.bkr.services.service.interfaces.MasterBreadListService;
+import org.bkr.services.service.interfaces.TemplateDetailService;
+import org.bkr.services.service.interfaces.TemplateService;
+import org.bkr.web.DDetail;
+import org.bkr.web.DHeader;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +81,17 @@ public class AllTest {
 				.build();
 		
 		dhs.save(dh);
+	}
+	
+	@Test
+	public void t4()
+	{
+		
+		Template t=ts.fetchFullById(1L);
+		
+		DHeader d=DHeaderFactory.createNew(t);
+		for(DDetail detail:d.getDetails())
+			System.out.println(detail);
 	}
 	
 }

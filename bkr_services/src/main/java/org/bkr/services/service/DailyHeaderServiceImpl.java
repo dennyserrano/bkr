@@ -1,10 +1,10 @@
-package org.bkr.services;
+package org.bkr.services.service;
 
 import org.bkr.models.DailyDetail;
 import org.bkr.models.DailyHeader;
-import org.bkr.repo.DailyDetailRepository;
-import org.bkr.repo.DailyHeaderRepository;
-import org.bkr.services.interfaces.DailyHeaderService;
+import org.bkr.services.repo.DailyDetailRepository;
+import org.bkr.services.repo.DailyHeaderRepository;
+import org.bkr.services.service.interfaces.DailyHeaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

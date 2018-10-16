@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 @EnableAutoConfiguration
-@EnableJpaRepositories("org.bkr.repo")
+@EnableJpaRepositories("org.bkr.services.repo")
 @EntityScan("org.bkr.models")
-@ComponentScan({"org.bkr.services"})
+@ComponentScan({"org.bkr.services.service"})
 public class Conf {
 
 }

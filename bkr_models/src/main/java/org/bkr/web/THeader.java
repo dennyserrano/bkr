@@ -11,5 +11,32 @@ public class THeader {
 	private String name;
 	
 	private List<TDetail> details=new ArrayList<>();
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<TDetail> getDetails() {
+		return details;
+	}
+
+	public void setDetails(List<TDetail> details) {
+		this.details = details;
+	}
+	
+	
+	
 	
 }

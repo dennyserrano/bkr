@@ -1,4 +1,4 @@
-package org.bkr.services.interfaces;
+package org.bkr.services.service.interfaces;
 
 import java.util.List;
 import java.util.Set;

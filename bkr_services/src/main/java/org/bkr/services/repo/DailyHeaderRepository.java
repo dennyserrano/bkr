@@ -1,4 +1,4 @@
-package org.bkr.repo;
+package org.bkr.services.repo;
 
 import org.bkr.models.DailyHeader;
 import org.springframework.data.repository.CrudRepository;

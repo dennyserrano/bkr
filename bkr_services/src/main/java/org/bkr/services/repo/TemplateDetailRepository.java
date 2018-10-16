@@ -1,4 +1,4 @@
-package org.bkr.repo;
+package org.bkr.services.repo;
 
 import java.util.List;
 

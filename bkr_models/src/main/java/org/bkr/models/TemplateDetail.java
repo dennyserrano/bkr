@@ -29,6 +29,15 @@ public class TemplateDetail implements java.io.Serializable {
 	public TemplateDetail() {
 	}
 
+	
+	
+	public TemplateDetail(TemplateDetailsId id) {
+		super();
+		this.id = id;
+	}
+
+
+
 	public TemplateDetail(TemplateDetailsId id, MasterBreadList masterBreadList, Template template) {
 		this.id = id;
 		this.masterBreadList = masterBreadList;

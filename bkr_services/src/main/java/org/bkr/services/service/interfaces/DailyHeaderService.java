@@ -1,4 +1,4 @@
-package org.bkr.services.interfaces;
+package org.bkr.services.service.interfaces;
 
 import org.bkr.models.DailyHeader;
 

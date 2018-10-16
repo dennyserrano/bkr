@@ -49,17 +49,18 @@ public class DDetailBuilder {
 		detail.setHeader(parent);
 		detail.setTemplateId(templateDetail.getTemplate().getId());
 		
-		
-		detail.setAmount(dailyDetail.getAmount());
-		detail.setBeginningInv(dailyDetail.getBeginningInv());
-		detail.setCategory(dailyDetail.getCategory());
-		detail.setEndingInv(dailyDetail.getEndingInv());
-		detail.setId(dailyDetail.getId());
-		detail.setProduction(dailyDetail.getProduction());
-		detail.setSales(dailyDetail.getSales());
-		detail.setTemplateId(dailyDetail.getTemplateDetails().getTemplate().getId());
-		detail.setTgafs(dailyDetail.getTgafs());
-		
+		if(dailyDetail!=null)
+		{
+			detail.setAmount(dailyDetail.getAmount());
+			detail.setBeginningInv(dailyDetail.getBeginningInv());
+			detail.setCategory(dailyDetail.getCategory());
+			detail.setEndingInv(dailyDetail.getEndingInv());
+			detail.setId(dailyDetail.getId());
+			detail.setProduction(dailyDetail.getProduction());
+			detail.setSales(dailyDetail.getSales());
+			detail.setTemplateId(dailyDetail.getTemplateDetails().getTemplate().getId());
+			detail.setTgafs(dailyDetail.getTgafs());
+		}
 		return detail;
 	}
 	

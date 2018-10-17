@@ -1,5 +1,8 @@
 package org.bkr.services.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bkr.models.Template;
 import org.bkr.models.TemplateDetail;
 import org.bkr.services.repo.TemplateRepository;
@@ -41,6 +44,16 @@ public class TemplateServiceImpl implements TemplateService {
 	public Template fetchFullById(long id) {
 		// TODO Auto-generated method stub
 		return tr.fetchFullById(id);
+	}
+
+	@Override
+	public List<Template> findAll() {
+		
+		ArrayList<Template> al=new ArrayList<>();
+		
+		tr.findAll().forEach(al::add);
+		
+		return al;
 	}
 
 	

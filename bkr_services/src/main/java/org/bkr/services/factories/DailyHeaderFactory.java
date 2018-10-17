@@ -39,16 +39,6 @@ public class DailyHeaderFactory {
 		return dailyHeader;
 	}
 	
-	public static DHeader generate(DailyHeader dh)
-	{
-		DHeader e=dailyHeaderConverter.convert(dh);
-		DDetailBuilder detailBuilder=new DDetailBuilder(new BreadConvert());
-		
-		if(dh.getDailyDetailses()!=null && dh.getDailyDetailses().size()!=0)
-			for(DailyDetail d:dh.getDailyDetailses())
-					e.getDetails().add(detailBuilder.setDetail(d).setParent(e).setTemplateDetail(d.getTemplateDetails()).build()); //not good
-				
-		return e;	
-	}
+	
 	
 }

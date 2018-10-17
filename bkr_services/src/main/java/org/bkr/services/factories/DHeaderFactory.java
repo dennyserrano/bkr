@@ -11,13 +11,14 @@ import org.bkr.services.conversions.BreadConvert;
 import org.bkr.services.conversions.DailyDetailConvert;
 import org.bkr.services.conversions.DailyHeaderConvert;
 import org.bkr.services.conversions.TemplateDetailConvert;
+import org.bkr.services.conversions.interfaces.Convertable;
 import org.bkr.web.DDetail;
 import org.bkr.web.DHeader;
 import org.bkr.web.TDetail;
 
 public class DHeaderFactory {
 
-	
+	private static Convertable<DailyHeader, DHeader> dailyHeaderConverter=new DailyHeaderConvert();
 	
 	public static DHeader createNew(Template template)
 	{
@@ -41,6 +42,17 @@ public class DHeaderFactory {
 		return head;
 	}
 	
+	public static DHeader generate(DailyHeader dh)
+	{
+		DHeader e=dailyHeaderConverter.convert(dh);
+		DDetailBuilder detailBuilder=new DDetailBuilder(new BreadConvert());
+		
+		if(dh.getDailyDetailses()!=null && dh.getDailyDetailses().size()!=0)
+			for(DailyDetail d:dh.getDailyDetailses())
+					e.getDetails().add(detailBuilder.setDetail(d).setParent(e).setTemplateDetail(d.getTemplateDetails()).build()); //not good
+				
+		return e;	
+	}
 	
 	
 }

@@ -1,5 +1,8 @@
 package org.bkr.services.factories;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bkr.models.Template;
 import org.bkr.models.TemplateDetail;
 import org.bkr.services.conversions.TemplateDetailConvert;
@@ -41,6 +44,16 @@ public class TemplateFactory {
 			}
 		
 		return t;
+	}
+	
+	public static List<THeader> generate(List<Template> header)
+	{
+		ArrayList<THeader> al=new ArrayList<>();
+		header.forEach(t->{
+			 al.add(generate(t));
+		});
+		
+		return al;
 	}
 	
 }

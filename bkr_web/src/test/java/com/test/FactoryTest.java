@@ -16,6 +16,7 @@ import org.bkr.models.MasterBreadList;
 import org.bkr.models.Template;
 import org.bkr.models.TemplateDetail;
 import org.bkr.models.TemplateDetailsId;
+import org.bkr.services.factories.DHeaderFactory;
 import org.bkr.services.factories.DailyHeaderFactory;
 import org.bkr.services.repo.DailyDetailRepository;
 import org.bkr.services.service.interfaces.DailyHeaderService;
@@ -105,7 +106,7 @@ public class FactoryTest {
 	@Test
 	public void dheaderTestConversion()
 	{
-		DHeader dh=DailyHeaderFactory.generate(dailyHeader);
+		DHeader dh=DHeaderFactory.generate(dailyHeader);
 		assertEquals(new BigDecimal(5),dh.getDifference());
 		assertEquals(new BigDecimal(6),dh.getExpenses() );
 		assertEquals(new BigDecimal(7), dh.getGrandTotal());
@@ -118,7 +119,7 @@ public class FactoryTest {
 	@Test
 	public void ddetailTestConversion()
 	{
-		DHeader dh=DailyHeaderFactory.generate(dailyHeader);
+		DHeader dh=DHeaderFactory.generate(dailyHeader);
 		ArrayList<DDetail> al=new ArrayList<>();
 		for(DDetail d:dh.getDetails())		
 		{
@@ -140,7 +141,7 @@ public class FactoryTest {
 	@Test
 	public void dailyHeaderConversion()
 	{
-		DHeader dheader=DailyHeaderFactory.generate(dailyHeader);
+		DHeader dheader=DHeaderFactory.generate(dailyHeader);
 		DailyHeader dh=DailyHeaderFactory.generate(dheader);
 		assertEquals(new BigDecimal(5),dh.getDifference());
 		assertEquals(new BigDecimal(6),dh.getExpenses() );
@@ -154,7 +155,7 @@ public class FactoryTest {
 	@Test
 	public void dailyDetailConversion()
 	{
-		DHeader dheader=DailyHeaderFactory.generate(dailyHeader);
+		DHeader dheader=DHeaderFactory.generate(dailyHeader);
 		DailyHeader dh=DailyHeaderFactory.generate(dheader);
 		ArrayList<DailyDetail> al=new ArrayList<>();
 		

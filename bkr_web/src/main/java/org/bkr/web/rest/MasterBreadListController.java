@@ -1,4 +1,4 @@
-package org.bkr.web.rest.controllers;
+package org.bkr.web.rest;
 
 import java.util.Date;
 import java.util.List;

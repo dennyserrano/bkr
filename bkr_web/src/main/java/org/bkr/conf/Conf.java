@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @EnableAutoConfiguration
 @EnableJpaRepositories("org.bkr.services.repo")
 @EntityScan("org.bkr.models")
-@ComponentScan({"org.bkr.services.service","org.bkr.web.rest.controllers"})
+@ComponentScan({"org.bkr.services.service","org.bkr.web"})
 public class Conf {
 
 }

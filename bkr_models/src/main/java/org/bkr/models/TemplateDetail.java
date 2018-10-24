@@ -1,17 +1,17 @@
 package org.bkr.models;
-// Generated 09 26, 18 5:30:50 PM by Hibernate Tools 5.2.11.Final
+// Generated 10 20, 18 7:24:40 PM by Hibernate Tools 5.2.11.Final
 
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.math.BigDecimal;
+
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -21,52 +21,42 @@ import javax.persistence.Table;
 @Table(name = "template_details")
 public class TemplateDetail implements java.io.Serializable {
 
-	private TemplateDetailsId id;
+	private Long id;
 	private MasterBreadList masterBreadList;
 	private Template template;
-	private Set<DailyDetail> dailyDetails = new HashSet<>();
-
+	private BigDecimal price;
+	
 	public TemplateDetail() {
 	}
 
-	
-	
-	public TemplateDetail(TemplateDetailsId id) {
-		super();
-		this.id = id;
-	}
-
-
-
-	public TemplateDetail(TemplateDetailsId id, MasterBreadList masterBreadList, Template template) {
-		this.id = id;
+	public TemplateDetail(MasterBreadList masterBreadList, Template template) {
 		this.masterBreadList = masterBreadList;
 		this.template = template;
 	}
-
-	public TemplateDetail(TemplateDetailsId id, MasterBreadList masterBreadList, Template template,
-			Set<DailyDetail> dailyDetailses) {
-		this.id = id;
-		this.masterBreadList = masterBreadList;
-		this.template = template;
-		this.dailyDetails = dailyDetailses;
+	
+	public TemplateDetail(long masterBreadId,long templateId)
+	{
+		this.masterBreadList=new MasterBreadList();
+		this.masterBreadList.setId(masterBreadId);
+		
+		this.template=new Template();
+		this.template.setId(templateId);
 	}
 
-	@EmbeddedId
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-	@AttributeOverrides({
-			@AttributeOverride(name = "templateId", column = @Column(name = "template_id", nullable = false)),
-			@AttributeOverride(name = "masterBreadId", column = @Column(name = "master_bread_id", nullable = false)) })
-	public TemplateDetailsId getId() {
+	@Column(name = "id", unique = true, nullable = false)
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(TemplateDetailsId id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "master_bread_id", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "master_bread_id", nullable = false)
 	public MasterBreadList getMasterBreadList() {
 		return this.masterBreadList;
 	}
@@ -76,7 +66,7 @@ public class TemplateDetail implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "template_id", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "template_id", nullable = false)
 	public Template getTemplate() {
 		return this.template;
 	}
@@ -85,13 +75,15 @@ public class TemplateDetail implements java.io.Serializable {
 		this.template = template;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "templateDetails")
-	public Set<DailyDetail> getDailyDetailses() {
-		return this.dailyDetails;
+	@Column(name = "price", precision = 10, scale = 2)
+	public BigDecimal getPrice() {
+		return price;
 	}
 
-	public void setDailyDetailses(Set<DailyDetail> dailyDetailses) {
-		this.dailyDetails = dailyDetailses;
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
+	
+	
 
 }

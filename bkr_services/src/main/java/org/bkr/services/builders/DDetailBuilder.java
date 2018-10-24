@@ -12,16 +12,17 @@ import org.bkr.services.conversions.interfaces.Convertable;
 import org.bkr.web.Bread;
 import org.bkr.web.DDetail;
 import org.bkr.web.DHeader;
+import org.bkr.web.TDetail;
 
 public class DDetailBuilder {
 
 	private DHeader parent;
 	private TemplateDetail templateDetail;
-	private Convertable<MasterBreadList, Bread> breadConverter;
+	private Convertable<TemplateDetail, TDetail> converter;
 	private DailyDetail dailyDetail;
 	
-	public DDetailBuilder(Convertable<MasterBreadList, Bread> breadConverter) {
-		this.breadConverter=breadConverter;
+	public DDetailBuilder(Convertable<TemplateDetail, TDetail> converter) {
+		this.converter=converter;
 	}
 	
 	public DDetailBuilder setDetail(DailyDetail dd)
@@ -45,10 +46,11 @@ public class DDetailBuilder {
 	public DDetail build()
 	{
 		DDetail detail=new DDetail();
-		detail.setBread(breadConverter.convert(templateDetail.getMasterBreadList()));
-		detail.setHeader(parent);
-		detail.setTemplateId(templateDetail.getTemplate().getId());
-		
+//		detail.set
+//		detail.setBread(breadConverter.convert(templateDetail.getMasterBreadList()));
+		detail.setDailyHeaderId(parent.getId());
+//		detail.setTemplateId(templateDetail.getTemplate().getId());
+		detail.setTemplateDetail(converter.convert(templateDetail));
 		if(dailyDetail!=null)
 		{
 			detail.setAmount(dailyDetail.getAmount());
@@ -58,7 +60,7 @@ public class DDetailBuilder {
 			detail.setId(dailyDetail.getId());
 			detail.setProduction(dailyDetail.getProduction());
 			detail.setSales(dailyDetail.getSales());
-			detail.setTemplateId(dailyDetail.getTemplateDetails().getTemplate().getId());
+//			detail.setTemplateId(dailyDetail.getTemplateDetails().getTemplate().getId());
 			detail.setTgafs(dailyDetail.getTgafs());
 		}
 		return detail;

@@ -15,14 +15,16 @@ import org.bkr.models.DailyHeader;
 import org.bkr.models.MasterBreadList;
 import org.bkr.models.Template;
 import org.bkr.models.TemplateDetail;
-import org.bkr.models.TemplateDetailsId;
 import org.bkr.services.factories.DHeaderFactory;
 import org.bkr.services.factories.DailyHeaderFactory;
+import org.bkr.services.factories.TemplateFactory;
 import org.bkr.services.repo.DailyDetailRepository;
 import org.bkr.services.service.interfaces.DailyHeaderService;
 import org.bkr.services.service.interfaces.TemplateService;
 import org.bkr.web.DDetail;
 import org.bkr.web.DHeader;
+import org.bkr.web.TDetail;
+import org.bkr.web.THeader;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,11 +60,11 @@ public class FactoryTest {
 	@Before()
 	public void breadBefore()
 	{
-		bread1=new MasterBreadList(1L,"Pandesal", 2L);
-		bread2=new MasterBreadList(2L,"Monay", 5L);
+		bread1=new MasterBreadList(1L,"Pandesal", new BigDecimal(2));
+		bread2=new MasterBreadList(2L,"Monay", new BigDecimal(2));
 		
-		td1=new TemplateDetail(new TemplateDetailsId(),bread1,template);
-		td2=new TemplateDetail(new TemplateDetailsId(), bread2, template);
+		td1=new TemplateDetail(bread1,template);
+		td2=new TemplateDetail(bread2, template);
 		
 		template =new Template();
 		template.setTemplateDetails(new HashSet<>());
@@ -123,7 +125,7 @@ public class FactoryTest {
 		ArrayList<DDetail> al=new ArrayList<>();
 		for(DDetail d:dh.getDetails())		
 		{
-			if(d.getBread().getBreadName().equals(bread1.getBreadName()))
+			if(d.getTemplateDetail().getBreadName().equals(bread1.getBreadName()))
 				al.add(d);
 		}
 		
@@ -161,7 +163,7 @@ public class FactoryTest {
 		
 		for(DailyDetail d:dh.getDailyDetailses())		
 		{
-			if(d.getTemplateDetails().getId().getMasterBreadId()==bread1.getId())
+			if(d.getTemplateDetails().getMasterBreadList().getId()==bread1.getId())
 				al.add(d);
 		}
 		
@@ -174,5 +176,7 @@ public class FactoryTest {
 		
 		assertTrue(cat.equals("AMPM") || cat.equals("PMAM"));
 	}
+	
+	
 	
 }

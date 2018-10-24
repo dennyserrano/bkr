@@ -1,5 +1,8 @@
 package org.bkr.services.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bkr.models.DailyDetail;
 import org.bkr.models.DailyHeader;
 import org.bkr.services.repo.DailyDetailRepository;
@@ -26,6 +29,22 @@ public class DailyHeaderServiceImpl implements DailyHeaderService {
 				ddr.save(dd);
 			}
 		return dh;
+	}
+
+	@Override
+	public List<DailyHeader> findAll() {
+		
+		ArrayList<DailyHeader> al=new ArrayList<>();
+		
+		dhr.findAll().forEach(al::add);
+		
+		return al;
+	}
+
+	@Override
+	public DailyHeader findById(long id) {
+		
+		return dhr.findById(id).get();
 	}
 
 }

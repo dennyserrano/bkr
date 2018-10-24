@@ -1,6 +1,7 @@
 package org.bkr.models;
 // Generated 09 26, 18 5:30:50 PM by Hibernate Tools 5.2.11.Final
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -21,24 +22,28 @@ public class MasterBreadList implements java.io.Serializable {
 
 	private Long id;
 	private String breadName;
-	private Long price;
+	private BigDecimal price;
 //	private Set<Templates> templateDetailses = new HashSet<>();
 
 	public MasterBreadList() {
 	}
 
+	public MasterBreadList(long id) {
+		this.id=id;
+	}
+	
 //	public MasterBreadList(String breadName, Long price, Set<Templates> templateDetailses) {
 //		this.breadName = breadName;
 //		this.price = price;
 //		this.templateDetailses = templateDetailses;
 //	}
 	
-	public MasterBreadList(String breadName, Long price) {
+	public MasterBreadList(String breadName, BigDecimal price) {
 		this.breadName = breadName;
 		this.price = price;
 	}
 	
-	public MasterBreadList(Long id,String breadName, Long price) {
+	public MasterBreadList(Long id,String breadName, BigDecimal price) {
 		this.breadName = breadName;
 		this.price = price;
 		this.id=id;
@@ -65,12 +70,12 @@ public class MasterBreadList implements java.io.Serializable {
 		this.breadName = breadName;
 	}
 
-	@Column(name = "price", precision = 10, scale = 0)
-	public Long getPrice() {
+	@Column(name = "price", precision = 10, scale = 2)
+	public BigDecimal getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

@@ -5,8 +5,8 @@ import java.util.HashSet;
 import org.bkr.models.DailyDetail;
 import org.bkr.models.DailyHeader;
 import org.bkr.models.TemplateDetail;
-import org.bkr.models.TemplateDetailsId;
 import org.bkr.services.builders.DDetailBuilder;
+import org.bkr.services.builders.DailyDetailBuilder;
 import org.bkr.services.conversions.BreadConvert;
 import org.bkr.services.conversions.DailyDetailConvert;
 import org.bkr.services.conversions.DailyHeaderConvert;
@@ -23,16 +23,15 @@ public class DailyHeaderFactory {
 	{
 		DailyHeader dailyHeader= dailyHeaderConverter.trevnoc(dh);
 		dailyHeader.setDailyDetailses(new HashSet<>());
+		DailyDetailBuilder dailyDetailBuilder= new DailyDetailBuilder(dailyDetailConverter);
 		if(dh.getDetails()!=null && dh.getDetails().size()!=0)
 			for(DDetail detail:dh.getDetails())
 			{
-				DailyDetail dailyDetail=dailyDetailConverter.trevnoc(detail);
-				dailyDetail.setDailyHeader(dailyHeader);
+				DailyDetail dailyDetail=dailyDetailBuilder.setDetail(detail).setHeader(dailyHeader).build();
 				
-				if(detail.getBread().getId()==null)
-					throw new RuntimeException(String.format("detail id[%s] bread id should not be null at this point", detail.getId()));
-					
-				dailyDetail.setTemplateDetails(new TemplateDetail(new TemplateDetailsId(detail.getTemplateId(), detail.getBread().getId())));
+				if(detail.getTemplateDetail().getMasterBreadId()==0)
+					throw new RuntimeException(String.format("detail id[%s] bread id should not be 0 at this point", detail.getId()));
+				
 				dailyHeader.getDailyDetailses().add(dailyDetail);
 			}
 		

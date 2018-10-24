@@ -1,10 +1,19 @@
 package org.bkr.web;
 
+import java.math.BigDecimal;
+
 public class Bread {
 
 	private Long id;
 	private String breadName;
-	private Long price;
+	private BigDecimal price;
+	
+	
+	
+	public Bread() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Long getId() {
 		return id;
 	}
@@ -17,10 +26,10 @@ public class Bread {
 	public void setBreadName(String breadName) {
 		this.breadName = breadName;
 	}
-	public Long getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
-	public void setPrice(Long price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 	@Override

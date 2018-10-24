@@ -7,7 +7,6 @@ import java.util.Set;
 import org.bkr.models.MasterBreadList;
 import org.bkr.models.Template;
 import org.bkr.models.TemplateDetail;
-import org.bkr.models.TemplateDetailsId;
 
 public class TemplateBuilder {
 
@@ -20,9 +19,9 @@ public class TemplateBuilder {
 		return this;
 	}
 	
-	public TemplateBuilder addDetail(TemplateDetailsId id,MasterBreadList mbl)
+	public TemplateBuilder addDetail(Template Detail)
 	{
-		al.add(new TemplateDetail(id,mbl,t));
+//		al.add(new TemplateDetail(id,mbl,t));
 		return this;
 	}
 	

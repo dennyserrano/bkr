@@ -5,7 +5,8 @@ import java.math.BigDecimal;
 public class DDetail {
 
 	private Long id;
-	private long templateId;
+	private long dailyHeaderId;
+	
 	private int beginningInv;
 	private int production;
 	private int endingInv;
@@ -14,9 +15,12 @@ public class DDetail {
 	private BigDecimal amount;
 	private String category;
 	
-	private DHeader header;
-	private Bread bread;
+	private TDetail templateDetail;
 	
+	public DDetail() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Long getId() {
 		return id;
 	}
@@ -66,29 +70,25 @@ public class DDetail {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public DHeader getHeader() {
-		return header;
+	
+	
+	public long getDailyHeaderId() {
+		return dailyHeaderId;
 	}
-	public void setHeader(DHeader header) {
-		this.header = header;
+	public void setDailyHeaderId(long dailyHeaderId) {
+		this.dailyHeaderId = dailyHeaderId;
 	}
-	public Bread getBread() {
-		return bread;
+	public TDetail getTemplateDetail() {
+		return templateDetail;
 	}
-	public void setBread(Bread bread) {
-		this.bread = bread;
-	}
-	public long getTemplateId() {
-		return templateId;
-	}
-	public void setTemplateId(long templateId) {
-		this.templateId = templateId;
+	public void setTemplateDetail(TDetail templateDetail) {
+		this.templateDetail = templateDetail;
 	}
 	@Override
 	public String toString() {
-		return "DDetail [id=" + id + ", templateId=" + templateId  + ", beginningInv=" + beginningInv + ", production=" + production + ", endingInv=" + endingInv
+		return "DDetail [id=" + id +  ", beginningInv=" + beginningInv + ", production=" + production + ", endingInv=" + endingInv
 				+ ", tgafs=" + tgafs + ", sales=" + sales + ", amount=" + amount + ", category=" + category
-				+ ", header=" + header + ", " + bread.toString() + "]";
+				+ "]";
 	}
 	
 	

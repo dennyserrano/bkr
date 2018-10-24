@@ -3,10 +3,9 @@ package org.bkr.services.repo;
 import java.util.List;
 
 import org.bkr.models.TemplateDetail;
-import org.bkr.models.TemplateDetailsId;
 import org.springframework.data.repository.CrudRepository;
 
-public interface TemplateDetailRepository extends CrudRepository<TemplateDetail, TemplateDetailsId>{
+public interface TemplateDetailRepository extends CrudRepository<TemplateDetail, Long>{
 	
 	List<TemplateDetail> findIdByTemplateId(long templateId);
 	

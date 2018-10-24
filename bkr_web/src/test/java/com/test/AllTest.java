@@ -11,7 +11,6 @@ import org.bkr.models.DailyHeader;
 import org.bkr.models.MasterBreadList;
 import org.bkr.models.Template;
 import org.bkr.models.TemplateDetail;
-import org.bkr.models.TemplateDetailsId;
 import org.bkr.services.factories.DHeaderFactory;
 import org.bkr.services.factories.DailyHeaderFactory;
 import org.bkr.services.service.interfaces.DailyHeaderService;
@@ -45,8 +44,8 @@ public class AllTest {
 	@Test
 	public void t1()
 	{
-		MasterBreadList mbl1=new MasterBreadListBuilder().create(null, "b1", 1L);
-		MasterBreadList mbl2=new MasterBreadListBuilder().create(null, "b2", 2L);
+		MasterBreadList mbl1=new MasterBreadListBuilder().create(null, "b1", new BigDecimal(1));
+		MasterBreadList mbl2=new MasterBreadListBuilder().create(null, "b2", new BigDecimal(2));
 		mbls.save(mbl1);
 		mbls.save(mbl2);
 		
@@ -58,13 +57,26 @@ public class AllTest {
 		MasterBreadList mbl1= mbls.findById(1L);
 		MasterBreadList mbl2=mbls.findById(2L);
 		
-		Template t=new TemplateBuilder()
-		.create("t1")
-		.addDetail(new TemplateDetailsId(1, mbl1.getId()), mbl1)
-		.addDetail(new TemplateDetailsId(1, mbl2.getId()), mbl2)
-		.build();
+//		Template t=new TemplateBuilder()
+//		.create("t1")
+//		.addDetail(new TemplateDetailsId(1, mbl1.getId()), mbl1)
+//		.addDetail(new TemplateDetailsId(1, mbl2.getId()), mbl2)
+//		.build();
 		
+//		ts.save(t);
+		
+		Template t=new Template();
+		t.setName("t1");
+		t.setTemplateDetails(new HashSet<>());
+		t.getTemplateDetails().add(new TemplateDetail(mbl1.getId(), 1));
+		t.getTemplateDetails().add(new TemplateDetail(mbl2.getId(), 1));
 		ts.save(t);
+		
+		for(TemplateDetail td:t.getTemplateDetails())
+			{
+				assertNotNull(td.getPrice());
+			}
+		
 	}
 	
 	@Test

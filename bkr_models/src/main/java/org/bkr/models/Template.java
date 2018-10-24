@@ -26,6 +26,11 @@ public class Template implements java.io.Serializable {
 	public Template() {
 	}
 
+	public Template(long id)
+	{
+		this.id=id;
+	}
+	
 	public Template(String name, Set<TemplateDetail> templateDetailses) {
 		this.name = name;
 		this.templateDetails = templateDetailses;

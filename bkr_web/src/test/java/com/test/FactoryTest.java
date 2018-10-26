@@ -18,6 +18,7 @@ import org.bkr.models.TemplateDetail;
 import org.bkr.services.factories.DHeaderFactory;
 import org.bkr.services.factories.DailyHeaderFactory;
 import org.bkr.services.factories.TemplateFactory;
+import org.bkr.services.factories.exc.DependencyException;
 import org.bkr.services.repo.DailyDetailRepository;
 import org.bkr.services.service.interfaces.DailyHeaderService;
 import org.bkr.services.service.interfaces.TemplateService;
@@ -141,7 +142,7 @@ public class FactoryTest {
 	}
 	
 	@Test
-	public void dailyHeaderConversion()
+	public void dailyHeaderConversion() throws DependencyException
 	{
 		DHeader dheader=DHeaderFactory.generate(dailyHeader);
 		DailyHeader dh=DailyHeaderFactory.generate(dheader);
@@ -155,7 +156,7 @@ public class FactoryTest {
 	}
 	
 	@Test
-	public void dailyDetailConversion()
+	public void dailyDetailConversion() throws DependencyException
 	{
 		DHeader dheader=DHeaderFactory.generate(dailyHeader);
 		DailyHeader dh=DailyHeaderFactory.generate(dheader);

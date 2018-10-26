@@ -27,31 +27,38 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+
+<script src="../js/home.js"></script>
+
 <!-- Custom styles for this template -->
 <link href="css/home.css" rel="stylesheet">
 
 </head>
 
-<body>
+<body ng-app="bkrApp">
 
 	<div id="wrapper" class="toggled">
-
+		<div ng-controller="ctrlA">{{ firstName + " " +
+			lastName }}</div>
 		<!-- Sidebar -->
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
-<!-- 				<li class="sidebar-brand"><a href="#"> aa </a></li> -->
+				<!-- 				<li class="sidebar-brand"><a href="#"> aa </a></li> -->
 				<li><a href="#">Daily Sales Reports</a></li>
 				<li><a href="#">Templates</a></li>
 				<li><a href="#">Bread List</a></li>
 			</ul>
 		</div>
+
 		<!-- /#sidebar-wrapper -->
 
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
-				
-<!-- 				contents here -->
+
+				<!-- 				contents here -->
 			</div>
 		</div>
 		<!-- /#page-content-wrapper -->
@@ -65,9 +72,7 @@
 
 	<!-- Menu Toggle Script -->
 	<script>
-		
-// 			$("#wrapper").toggleClass("toggled");
-		
+		// 			$("#wrapper").toggleClass("toggled");
 	</script>
 
 </body>

@@ -6,6 +6,7 @@ import java.util.List;
 import org.bkr.models.DailyHeader;
 import org.bkr.services.factories.DHeaderFactory;
 import org.bkr.services.factories.DailyHeaderFactory;
+import org.bkr.services.factories.exc.DependencyException;
 import org.bkr.services.service.interfaces.DailyHeaderService;
 import org.bkr.web.DHeader;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,13 @@ public class DailyHeaderController {
 	public DHeader save(@RequestBody DHeader dhead)
 	{
 		
-		DailyHeader dh= DailyHeaderFactory.generate(dhead);
+		DailyHeader dh=null;
+		try {
+			dh = DailyHeaderFactory.generate(dhead);
+		} catch (DependencyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		if(dh.getDate()==null)
 			dh.setDate(new Date());

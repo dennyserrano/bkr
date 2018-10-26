@@ -11,6 +11,7 @@ import org.bkr.services.conversions.BreadConvert;
 import org.bkr.services.conversions.DailyDetailConvert;
 import org.bkr.services.conversions.DailyHeaderConvert;
 import org.bkr.services.conversions.interfaces.Convertable;
+import org.bkr.services.factories.exc.DependencyException;
 import org.bkr.web.DDetail;
 import org.bkr.web.DHeader;
 
@@ -19,7 +20,7 @@ public class DailyHeaderFactory {
 	private static Convertable<DailyHeader, DHeader> dailyHeaderConverter=new DailyHeaderConvert();
 	private static Convertable<DailyDetail, DDetail> dailyDetailConverter=new DailyDetailConvert();
 	
-	public static DailyHeader generate(DHeader dh)
+	public static DailyHeader generate(DHeader dh) throws DependencyException
 	{
 		DailyHeader dailyHeader= dailyHeaderConverter.trevnoc(dh);
 		dailyHeader.setDailyDetailses(new HashSet<>());
@@ -29,8 +30,11 @@ public class DailyHeaderFactory {
 			{
 				DailyDetail dailyDetail=dailyDetailBuilder.setDetail(detail).setHeader(dailyHeader).build();
 				
+				if(detail.getTemplateDetail()==null)
+					throw new DependencyException("No Template Specified");
+					
 				if(detail.getTemplateDetail().getMasterBreadId()==0)
-					throw new RuntimeException(String.format("detail id[%s] bread id should not be 0 at this point", detail.getId()));
+					throw new DependencyException(String.format("detail id[%s] bread id should not be 0 at this point", detail.getId()));
 				
 				dailyHeader.getDailyDetailses().add(dailyDetail);
 			}

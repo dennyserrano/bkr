@@ -1,5 +1,6 @@
 package org.bkr.services.factories;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +27,7 @@ public class DHeaderFactory {
 	{
 		
 		DHeader head=new DHeader(null, new Date());
+		
 		DDetailBuilder detailBuilder=new DDetailBuilder(templateDetailConverter);
 		
 		if(template.getTemplateDetails()!=null && template.getTemplateDetails().size()!=0)

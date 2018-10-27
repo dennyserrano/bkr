@@ -41,6 +41,12 @@ public class DHeader {
 		super();
 		this.id = id;
 		this.date = date;
+		
+		this.setDifference(BigDecimal.ZERO);
+		this.setExpenses(BigDecimal.ZERO);
+		this.setGrandTotal(BigDecimal.ZERO);
+		this.setRemittance(BigDecimal.ZERO);
+		this.setTotal(BigDecimal.ZERO);
 	}
 
 	public Long getId() {

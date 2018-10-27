@@ -4,10 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.bkr.models.DailyHeader;
+import org.bkr.models.Template;
 import org.bkr.services.factories.DHeaderFactory;
 import org.bkr.services.factories.DailyHeaderFactory;
 import org.bkr.services.factories.exc.DependencyException;
 import org.bkr.services.service.interfaces.DailyHeaderService;
+import org.bkr.services.service.interfaces.TemplateService;
 import org.bkr.web.DHeader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DailyHeaderController {
 
 	@Autowired private DailyHeaderService dhs;
+	@Autowired private TemplateService templateService;
 	
 	@RequestMapping("/all")
 	public List<DHeader> all()
@@ -31,6 +34,14 @@ public class DailyHeaderController {
 	public DHeader find(@RequestParam("y") long id)
 	{
 		return DHeaderFactory.generate(dhs.findById(id));
+	}
+	
+	
+	@RequestMapping("/createnew")
+	public DHeader createNew(@RequestParam("y") long templateId)
+	{
+		Template t= templateService.findById(templateId);
+		return DHeaderFactory.createNew(t);
 	}
 	
 	@RequestMapping("/save")

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class DDetail {
 
 	private Long id;
-	private long dailyHeaderId;
+	private Long dailyHeaderId;
 	
 	private int beginningInv;
 	private int production;
@@ -19,7 +19,7 @@ public class DDetail {
 	
 	public DDetail() {
 		super();
-		// TODO Auto-generated constructor stub
+		setAmount(BigDecimal.ZERO);
 	}
 	public Long getId() {
 		return id;
@@ -72,10 +72,10 @@ public class DDetail {
 	}
 	
 	
-	public long getDailyHeaderId() {
+	public Long getDailyHeaderId() {
 		return dailyHeaderId;
 	}
-	public void setDailyHeaderId(long dailyHeaderId) {
+	public void setDailyHeaderId(Long dailyHeaderId) {
 		this.dailyHeaderId = dailyHeaderId;
 	}
 	public TDetail getTemplateDetail() {

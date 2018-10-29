@@ -27,12 +27,21 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
 
-<script src="../js/home.js"></script>
 
-<!-- Custom styles for this template -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular-route.min.js"></script>
+
+<script src="../js/bootbox.min.js"></script>
+
+
+<script src="../js/bkrapp.js"></script>
+<script src="../js/routes.js"></script>
+<script src="../js/breadlistctrl.js"></script>
+
+<script src="../directives/modal/modal.js"></script>
+
 <link href="css/home.css" rel="stylesheet">
 
 </head>
@@ -40,15 +49,12 @@
 <body ng-app="bkrApp">
 
 	<div id="wrapper" class="toggled">
-		<div ng-controller="ctrlA">{{ firstName + " " +
-			lastName }}</div>
-		<!-- Sidebar -->
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<!-- 				<li class="sidebar-brand"><a href="#"> aa </a></li> -->
 				<li><a href="#">Daily Sales Reports</a></li>
 				<li><a href="#">Templates</a></li>
-				<li><a href="#">Bread List</a></li>
+				<li><a href="#!breadlist">Bread List</a></li>
 			</ul>
 		</div>
 
@@ -56,8 +62,8 @@
 
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
-			<div class="container-fluid">
-
+			<div class="container-fluid" ng-view>
+				
 				<!-- 				contents here -->
 			</div>
 		</div>

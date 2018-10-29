@@ -19,4 +19,10 @@ public class NavigatorController {
 		return "home.html";
 	}
 	
+	@GetMapping("/breadlist")
+	public String breadList()
+	{
+		return "breadlist.html";
+	}
+	
 }

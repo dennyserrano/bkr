@@ -17,7 +17,7 @@ return {
     	model:"=",
     	save:"&"
     },
-    templateUrl: '../../../directives/modal/addeditbread.html'
+    templateUrl: '../../../masterbread/modal/addeditbread.html'
   };
 
 });

@@ -1,5 +1,5 @@
 
-<div class="container" ng-controller="breadListCtrl">
+<div class="container" ng-controller="templateListCtrl">
 
 	<div class="row">
 		<div class="col"></div>
@@ -22,30 +22,34 @@
 
 
 		<div class="col-md-12">
-			<h3>Bread List</h3>
+			<h3>Templates</h3>
 			<div class="table-responsive">
 
-
+				
 				<table id="mytable" class="table table-bordred table-striped">
 
 					<thead>
 
 						<th>Name</th>
-						<th>Price</th>
+
 						<th>Edit</th>
 
 						<th>Delete</th>
 					</thead>
 					<tbody>
 
-						<tr ng-repeat="bread in breadList">
-							<td>{{bread.breadName}}</td>
-							<td>{{bread.price}}</td>
+						<tr ng-repeat="template in templates">
+							<td>{{template.name}}</td>
+							
 							<td>
-										<img  style="width:25px; height:25px;" src="../img/si-glyph-pencil.svg"/>
+										<a ng-href="#!templatedetails/{{100}}" >
+											<img  style="width:25px; height:25px;" src="../img/si-glyph-pencil.svg"/>
+										</a>
 								</td>
 							<td>
+									<a href="#templatedetails" onclick="return false" >
 										<img  style="width:25px; height:25px;" src="../img/si-glyph-trash.svg"/>
+									</a>
 							</td>
 						</tr>
 
@@ -61,8 +65,6 @@
 		</div>
 
 	</div>
-	
-<add-edit-bread model="breadModel" save="modalSave()"></add-edit-bread>
 
 
 </div>

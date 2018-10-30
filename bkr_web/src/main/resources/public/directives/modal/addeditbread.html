@@ -10,17 +10,17 @@
       </div>
       <div class="modal-body">
       	<div class="row">
-      		<label for="breadName" class="col-sm-2 col-form-label">Name</label>
-      		<input class="form-control" id="breadName" type="text" placeholder="Bread Name">
+      		<label for="breadName" class="col-sm-2 col-form-label" >Name</label>
+      		<input class="form-control" id="breadName" ng-model="model.breadName" type="text" placeholder="Bread Name">
       	</div>
         <div class="row">
       		<label for="price" class="col-sm-2 col-form-label">Price</label>
-      		<input class="form-control" id="price" type="number" placeholder="Price">
+      		<input class="form-control" id="price" ng-model="model.price" type="number" placeholder="Price">
       	</div>
-        
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="save()">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Cancel</button>
       </div>
     </div>
 

@@ -12,7 +12,7 @@
 		<div class="col"></div>
 		<div class="col"></div>
 		<div class="col">
-			<img src="../img/add.png" ng-click="addDialog()" data-toggle="modal" data-target="#myModal"> Add
+			<img src="../img/add.png" data-toggle="modal" data-target="#myModal"> Add
 		</div>
 	</div>
 	<div class="row">
@@ -28,32 +28,23 @@
 					<thead>
 
 						<th>Name</th>
-
+						<th>Price</th>
 						<th>Edit</th>
 
 						<th>Delete</th>
 					</thead>
 					<tbody>
 
-						<tr>
-
-							<td>Mohsin</td>
-							<td><p data-placement="top" data-toggle="tooltip"
-									title="Edit">
-									<button class="btn btn-primary btn-xs" data-title="Edit"
-										data-toggle="modal" data-target="#edit">
-										<span class="glyphicon glyphicon-pencil"></span>
-									</button>
-								</p></td>
-							<td><p data-placement="top" data-toggle="tooltip"
-									title="Delete">
-									<button class="btn btn-danger btn-xs" data-title="Delete"
-										data-toggle="modal" data-target="#delete">
-										<span class="glyphicon glyphicon-trash"></span>
-									</button>
-								</p></td>
+						<tr ng-repeat="bread in breadList">
+							<td>{{bread.breadName}}</td>
+							<td>{{bread.price}}</td>
+							<td>
+										<img  style="width:25px; height:25px;" src="../img/si-glyph-pencil.svg"/>
+								</td>
+							<td>
+										<img  style="width:25px; height:25px;" src="../img/si-glyph-trash.svg"/>
+							</td>
 						</tr>
-
 
 					</tbody>
 
@@ -68,7 +59,7 @@
 
 	</div>
 	
-<add-edit-bread></add-edit-bread>
+<add-edit-bread model="breadModel" save="modalSave()"></add-edit-bread>
 
 
 </div>

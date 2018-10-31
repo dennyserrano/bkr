@@ -1,0 +1,50 @@
+<div id="breadlistchk" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+
+				<h4 class="modal-title">Select Bread(s)</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+			
+								<table id="mytable" class="table table-bordred table-striped">
+
+									<thead>
+										<th><input type="checkbox" ng-click="selectAll()" checked></th>
+
+										<th>Name</th>
+
+										<th>Price</th>
+
+
+									</thead>
+									<tbody>
+
+										<tr ng-repeat="bread in breadList">
+											<td>
+												<input class="form-check-input" type="checkbox" data-checklist-model="breads" data-checklist-value="bread"> 
+											</td>
+											<td>{{bread.breadName}}</td>
+											<td>{{bread.price}}</td>
+
+										</tr>
+
+									</tbody>
+
+								</table>
+								
+	
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					ng-click="save()">OK</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					ng-click="cancel()">Cancel</button>
+			</div>
+		</div>
+
+	</div>
+</div>

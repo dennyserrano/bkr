@@ -8,6 +8,10 @@ app.controller("breadListCtrl",function($scope){
 		console.log("save invoked");
 	}
 	
+	$scope.listSize=function(){
+		return $scope.breadList.length;
+	}
+	
 	$scope.breadList=[
 		{
 			breadName:"Pandesal",

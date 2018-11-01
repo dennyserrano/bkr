@@ -14,8 +14,9 @@
 				<img src="../img/add.png" > Bread List
 			</a>
 		</div>
-		<div class="col">
-			<a href="#" onclick="return false" data-toggle="modal" data-target="#myModal">
+		
+		<div class="col" ng-if="template.id==0">
+			<a href="#" onclick="return false" data-toggle="modal" data-target="#copytemp">
 				<img src="../img/add.png" > Copy Template
 			</a>
 		</div>
@@ -25,7 +26,7 @@
 
 
 		<div class="col-md-12">
-			<h3>Template Items of t1</h3>
+			<h3>Template Items of {{template.name}}</h3>
 			<div class="table-responsive">
 
 				
@@ -72,6 +73,6 @@
 	</div>
 	
 	<bread-list-check-list breads="breads" save="selectedBreadSave()"></bread-list-check-list>
-
-
+	<copy-temp model="selectedTemplate" save="templateSelectSave()"></copy-temp>
+	<template-name model="template.name" save="templateNameSave()" cancel="templateNameCancel()"></template-name>
 </div>

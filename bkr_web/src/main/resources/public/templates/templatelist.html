@@ -12,10 +12,9 @@
 		<div class="col"></div>
 		<div class="col"></div>
 		<div class="col">
-			<a href="#" onclick="return false" data-toggle="modal" data-target="#myModal">
-				<img src="../img/add.png" > Add
+			<a href="#!templatedetails/0" > <img src="../img/add.png"> Add
 			</a>
-			
+
 		</div>
 	</div>
 	<div class="row">
@@ -25,7 +24,7 @@
 			<h3>Templates</h3>
 			<div class="table-responsive">
 
-				
+
 				<table id="mytable" class="table table-bordred table-striped">
 
 					<thead>
@@ -40,17 +39,15 @@
 
 						<tr ng-repeat="template in templates">
 							<td>{{template.name}}</td>
-							
-							<td>
-										<a ng-href="#!templatedetails/{{100}}" >
-											<img  style="width:25px; height:25px;" src="../img/si-glyph-pencil.svg"/>
-										</a>
-								</td>
-							<td>
-									<a href="#templatedetails" onclick="return false" >
-										<img  style="width:25px; height:25px;" src="../img/si-glyph-trash.svg"/>
-									</a>
-							</td>
+
+							<td><a ng-href="#!templatedetails/{{100}}"> <img
+									style="width: 25px; height: 25px;"
+									src="../img/si-glyph-pencil.svg" />
+							</a></td>
+							<td><a href="#templatedetails" onclick="return false">
+									<img style="width: 25px; height: 25px;"
+									src="../img/si-glyph-trash.svg" />
+							</a></td>
 						</tr>
 
 					</tbody>
@@ -58,7 +55,7 @@
 				</table>
 
 				<div class="clearfix"></div>
-				
+
 
 			</div>
 

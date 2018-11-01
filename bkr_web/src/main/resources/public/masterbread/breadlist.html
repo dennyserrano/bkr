@@ -26,7 +26,7 @@
 			<div class="table-responsive">
 
 
-				<table id="mytable" class="table table-bordred table-striped">
+				<table id="mytable" class="table table-bordred table-striped" ng-if="listSize()!==0">
 
 					<thead>
 
@@ -52,7 +52,9 @@
 					</tbody>
 
 				</table>
-
+				<div ng-if="listSize()===0">
+					No items to show
+				</div>
 				<div class="clearfix"></div>
 				
 

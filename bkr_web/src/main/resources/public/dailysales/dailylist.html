@@ -1,0 +1,78 @@
+
+<div class="container" ng-controller="dailyListCtrl">
+
+	<div class="row">
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col">
+			<a href="#!dailydetails" > <img src="../img/add.png"> Create New
+			</a>
+
+		</div>
+	</div>
+	<div class="row">
+
+
+		<div class="col-md-12">
+			<h3>Daily Sales Summary</h3>
+			<div class="table-responsive">
+
+
+				<table id="mytable" class="table table-bordred table-striped">
+
+					<thead>
+
+						<th>Date</th>
+						<th>Total</th>
+						<th>Expenses</th>
+						<th>Grand Total</th>
+						<th>Remittance</th>
+						<th>Difference</th>
+
+						<th>Edit</th>
+
+						<th>Delete</th>
+						
+
+					</thead>
+					<tbody>
+
+						<tr ng-repeat="header in headerList">
+							<td>{{header.date}}</td>
+							<td>{{header.total}}</td>
+							<td>{{header.expenses}}</td>
+							<td>{{header.grandTotal}}</td>
+							<td>{{header.remittance}}</td>
+							<td>{{header.difference}}</td>
+							<td><a ng-href="#!templatedetails/{{100}}"> <img
+									style="width: 25px; height: 25px;"
+									src="../img/si-glyph-pencil.svg" />
+							</a></td>
+							<td><a href="#templatedetails" onclick="return false">
+									<img style="width: 25px; height: 25px;"
+									src="../img/si-glyph-trash.svg" />
+							</a></td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<div class="clearfix"></div>
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+</div>

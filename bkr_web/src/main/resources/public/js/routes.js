@@ -10,4 +10,10 @@ app.config(function($routeProvider) {
     .when("/templatedetails/:templateId", {
         templateUrl : "../templates/templatedetails.html"
     })
+    .when("/dailylist", {
+        templateUrl : "../dailysales/dailylist.html"
+    })
+    .when("/dailydetails", {
+        templateUrl : "../dailysales/dailydetails.html"
+    })
 });

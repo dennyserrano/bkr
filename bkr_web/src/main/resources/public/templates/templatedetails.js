@@ -29,11 +29,19 @@ app.controller("templateDetailCtrl",function($scope,$routeParams,$timeout,$locat
 		console.log(angular.toJson($scope.breads));
 	}
 	
+//	if($scope.template.id==0)
+//	{
+//		$timeout(function () {
+//			$("#templatename").modal('show');
+//		});
+//	}
+	
 	if($scope.template.id==0)
 	{
-		$timeout(function () {
-			$("#templatename").modal('show');
-		});
+		$scope.template.name=prompt("Enter Template Name");
+		
+		if($scope.template.name=="" || $scope.template.name==null)
+			$scope.templateNameCancel();
 	}
 	
 	

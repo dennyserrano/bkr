@@ -14,9 +14,13 @@ public class DHeader {
 	private BigDecimal grandTotal;
 	private BigDecimal remittance;
 	private BigDecimal difference;
+	private BigDecimal amRemittance;
+	private BigDecimal pmRemittance;
+	private BigDecimal amExpenses;
+	private BigDecimal pmExpenses;
 	
-	private List<DDetail> details=new ArrayList<>();
-
+	private List<DDetail> amList=new ArrayList<>();
+	private List<DDetail> pmList=new ArrayList<>();
 	
 	
 	public DHeader() {
@@ -25,7 +29,7 @@ public class DHeader {
 	}
 
 	public DHeader(Long id, Date date, BigDecimal total, BigDecimal expenses, BigDecimal grandTotal,
-			BigDecimal remittance, BigDecimal difference, List<DDetail> details) {
+			BigDecimal remittance, BigDecimal difference) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -34,7 +38,6 @@ public class DHeader {
 		this.grandTotal = grandTotal;
 		this.remittance = remittance;
 		this.difference = difference;
-		this.details = details;
 	}
 
 	public DHeader(Long id, Date date) {
@@ -105,12 +108,54 @@ public class DHeader {
 		this.difference = difference;
 	}
 
-	public List<DDetail> getDetails() {
-		return details;
+	
+
+	public List<DDetail> getAmList() {
+		return amList;
 	}
 
-	public void setDetails(List<DDetail> details) {
-		this.details = details;
+	public void setAmList(List<DDetail> amList) {
+		this.amList = amList;
+	}
+
+	public List<DDetail> getPmList() {
+		return pmList;
+	}
+
+	public void setPmList(List<DDetail> pmList) {
+		this.pmList = pmList;
+	}
+
+	public BigDecimal getAmRemittance() {
+		return amRemittance;
+	}
+
+	public void setAmRemittance(BigDecimal amRemittance) {
+		this.amRemittance = amRemittance;
+	}
+
+	public BigDecimal getPmRemittance() {
+		return pmRemittance;
+	}
+
+	public void setPmRemittance(BigDecimal pmRemittance) {
+		this.pmRemittance = pmRemittance;
+	}
+
+	public BigDecimal getAmExpenses() {
+		return amExpenses;
+	}
+
+	public void setAmExpenses(BigDecimal amExpenses) {
+		this.amExpenses = amExpenses;
+	}
+
+	public BigDecimal getPmExpenses() {
+		return pmExpenses;
+	}
+
+	public void setPmExpenses(BigDecimal pmExpenses) {
+		this.pmExpenses = pmExpenses;
 	}
 	
 	

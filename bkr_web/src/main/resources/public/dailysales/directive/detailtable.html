@@ -1,0 +1,58 @@
+<table id="amTable" class="table table-bordred table-striped">
+
+					<thead>
+
+						<th>Particular</th>
+						<th>Price</th>
+						<th>Beginning Inventory</th>
+						<th>Production</th>
+						<th>Ending Inventory</th>
+						<th>TGAFS</th>
+						<th>Sales</th>
+						<th>Amount</th>
+
+
+					</thead>
+					<tbody>
+
+						<tr ng-repeat="item in head.list">
+							<td>{{item.breadName}}</td>
+							<td>{{item.price}}</td>
+							<td><input type="text" class="form-control"
+								ng-model="item.beginningInv"></td>
+							<td><input type="text" class="form-control"
+								ng-model="item.production"></td>
+							<td><input type="text" class="form-control"
+								ng-model="item.endingInv"></td>
+							<td>{{item.tgafs=item.production-item.beginningInv}}</td>
+							<td>{{item.sales=item.tgafs-item.endingInv}}</td>
+							<td>{{item.amount=item.sales*item.price}}</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+				<table align="right" >
+					<tr>
+						<td>Total:</td>
+						<td>{{head.total=getTotal()}}</td>
+					</tr>
+					<tr>
+						<td>Expenses:</td>
+						<td><input type="text" class="form-control" ng-model="head.expenses"></td>
+					</tr>
+					<tr>
+						<td>Grand Total:</td>
+						<td>{{head.grandTotal=head.expenses-head.total}}</td>
+					</tr>
+					<tr>
+						<td>Cash Remittance:</td>
+						<td><input type="text" class="form-control" ng-model="head.remittance"></td>
+					</tr>
+					<tr>
+						<td>Difference:</td>
+						<td>{{head.difference=head.remittance-head.grandTotal}}</td>
+					</tr>
+				</table>
+				
+				NEED STORAGE FOR REMITTANCE AND GRAND TOTAL!!

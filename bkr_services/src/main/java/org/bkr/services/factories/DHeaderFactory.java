@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.bkr.constants.DailyHeaderCategories;
 import org.bkr.models.DailyDetail;
 import org.bkr.models.DailyHeader;
 import org.bkr.models.Template;
@@ -35,11 +36,11 @@ public class DHeaderFactory {
 			{
 				
 				DDetail am=detailBuilder.setTemplateDetail(td).setParent(head).build();
-				am.setCategory("AM");
+				am.setCategory(DailyHeaderCategories.AM);
 				DDetail pm=detailBuilder.setTemplateDetail(td).setParent(head).build();
-				pm.setCategory("PM");
-				head.getDetails().add(am);
-				head.getDetails().add(pm);
+				pm.setCategory(DailyHeaderCategories.PM);
+				head.getAmList().add(am);
+				head.getPmList().add(pm);
 			}
 		
 		
@@ -53,7 +54,13 @@ public class DHeaderFactory {
 		
 		if(dh.getDailyDetailses()!=null && dh.getDailyDetailses().size()!=0)
 			for(DailyDetail d:dh.getDailyDetailses())
-					e.getDetails().add(detailBuilder.setDetail(d).setParent(e).setTemplateDetail(d.getTemplateDetails()).build()); //not good
+			{
+				DDetail ddetail=detailBuilder.setDetail(d).setParent(e).setTemplateDetail(d.getTemplateDetails()).build();
+				if(ddetail.getCategory().equals(DailyHeaderCategories.AM))
+					e.getAmList().add(ddetail);
+				else
+					e.getPmList().add(ddetail);
+			}
 				
 		return e;	
 	}

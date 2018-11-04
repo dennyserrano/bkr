@@ -95,15 +95,15 @@ public class AllTest {
 		dhs.save(dh);
 	}
 	
-	@Test
-	public void t4()
-	{
-		
-		Template t=ts.fetchFullById(1L);
-		
-		DHeader d=DHeaderFactory.createNew(t);
-		for(DDetail detail:d.getDetails())
-			System.out.println(detail);
-	}
+//	@Test
+//	public void t4()
+//	{
+//		
+//		Template t=ts.fetchFullById(1L);
+//		
+//		DHeader d=DHeaderFactory.createNew(t);
+//		for(DDetail detail:d.getAmList())
+//			System.out.println(detail);
+//	}
 	
 }

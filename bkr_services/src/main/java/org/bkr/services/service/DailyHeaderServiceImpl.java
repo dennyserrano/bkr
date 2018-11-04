@@ -8,6 +8,7 @@ import org.bkr.models.DailyHeader;
 import org.bkr.services.repo.DailyDetailRepository;
 import org.bkr.services.repo.DailyHeaderRepository;
 import org.bkr.services.service.interfaces.DailyHeaderService;
+import org.bkr.services.utilities.DailyHeaderHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,8 @@ public class DailyHeaderServiceImpl implements DailyHeaderService {
 	
 	@Override
 	public DailyHeader save(DailyHeader dh) {
+		
+		DailyHeaderHelper.align(dh);
 		
 		dhr.save(dh);
 		
@@ -47,4 +50,5 @@ public class DailyHeaderServiceImpl implements DailyHeaderService {
 		return dhr.findById(id).get();
 	}
 
+	
 }

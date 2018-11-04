@@ -17,6 +17,10 @@ public class DailyHeaderConvert implements Convertable<DailyHeader, DHeader>
 		dh.setId(head.getId());
 		dh.setRemittance(head.getRemittance());
 		dh.setTotal(head.getTotal());
+		dh.setAmExpenses(head.getAmExpenses());
+		dh.setAmRemittance(head.getAmRemittance());
+		dh.setPmExpenses(head.getPmExpenses());
+		dh.setPmRemittance(head.getRemittance());
 		return dh;
 	}
 
@@ -30,7 +34,10 @@ public class DailyHeaderConvert implements Convertable<DailyHeader, DHeader>
 		dh.setId(head.getId());
 		dh.setRemittance(head.getRemittance());
 		dh.setTotal(head.getTotal());
-		
+		dh.setAmExpenses(head.getAmExpenses());
+		dh.setAmRemittance(head.getAmRemittance());
+		dh.setPmExpenses(head.getPmExpenses());
+		dh.setPmRemittance(head.getPmRemittance());
 		return dh;
 	}
 }

@@ -21,6 +21,10 @@ public class DailyHeaderBuilder {
 		dh.setGrandTotal(BigDecimal.ZERO);
 		dh.setRemittance(BigDecimal.ZERO);
 		dh.setTotal(BigDecimal.ZERO);
+		dh.setAmExpenses(BigDecimal.ZERO);
+		dh.setPmExpenses(BigDecimal.ZERO);
+		dh.setAmRemittance(BigDecimal.ZERO);
+		dh.setPmRemittance(BigDecimal.ZERO);
 		return this;
 	}
 	

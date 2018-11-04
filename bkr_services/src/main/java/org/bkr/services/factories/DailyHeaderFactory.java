@@ -1,5 +1,6 @@
 package org.bkr.services.factories;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import org.bkr.models.DailyDetail;
@@ -25,8 +26,11 @@ public class DailyHeaderFactory {
 		DailyHeader dailyHeader= dailyHeaderConverter.trevnoc(dh);
 		dailyHeader.setDailyDetailses(new HashSet<>());
 		DailyDetailBuilder dailyDetailBuilder= new DailyDetailBuilder(dailyDetailConverter);
-		if(dh.getDetails()!=null && dh.getDetails().size()!=0)
-			for(DDetail detail:dh.getDetails())
+		ArrayList<DDetail> al=new ArrayList<>(dh.getAmList());
+		al.addAll(dh.getPmList());
+		
+		if(al.size()!=0)
+			for(DDetail detail:al)
 			{
 				DailyDetail dailyDetail=dailyDetailBuilder.setDetail(detail).setHeader(dailyHeader).build();
 				

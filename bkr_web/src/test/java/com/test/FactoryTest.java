@@ -22,6 +22,7 @@ import org.bkr.services.factories.exc.DependencyException;
 import org.bkr.services.repo.DailyDetailRepository;
 import org.bkr.services.service.interfaces.DailyHeaderService;
 import org.bkr.services.service.interfaces.TemplateService;
+import org.bkr.services.utilities.DailyHeaderHelper;
 import org.bkr.web.DDetail;
 import org.bkr.web.DHeader;
 import org.bkr.web.TDetail;
@@ -80,6 +81,10 @@ public class FactoryTest {
 		dailyHeader.setRemittance(new BigDecimal(8));
 		dailyHeader.setTotal(new BigDecimal(9));
 		dailyHeader.setDailyDetailses(new HashSet<>());
+		dailyHeader.setAmExpenses(new BigDecimal(50));
+		dailyHeader.setPmExpenses(new BigDecimal(30));
+		dailyHeader.setAmRemittance(new BigDecimal(1000));
+		dailyHeader.setPmRemittance(new BigDecimal(2000));
 		
 		DailyDetail dd1=new DailyDetail(1, 2, 3, 4, 5, new BigDecimal(6), "AM");
 		dd1.setTemplateDetails(td1);
@@ -115,7 +120,7 @@ public class FactoryTest {
 		assertEquals(new BigDecimal(7), dh.getGrandTotal());
 		assertEquals(new BigDecimal(8),dh.getRemittance() );
 		assertEquals(new BigDecimal(9), dh.getTotal());
-		assertEquals(4,dh.getDetails().size());
+		assertEquals(4,dh.getAmList().size()+dh.getPmList().size());
 		
 	}
 	
@@ -124,12 +129,17 @@ public class FactoryTest {
 	{
 		DHeader dh=DHeaderFactory.generate(dailyHeader);
 		ArrayList<DDetail> al=new ArrayList<>();
-		for(DDetail d:dh.getDetails())		
+		for(DDetail d:dh.getAmList())		
 		{
 			if(d.getTemplateDetail().getBreadName().equals(bread1.getBreadName()))
 				al.add(d);
 		}
 		
+		for(DDetail d:dh.getPmList())
+		{
+			if(d.getTemplateDetail().getBreadName().equals(bread1.getBreadName()))
+				al.add(d);
+		}
 		DDetail d1= al.get(0);
 		assertEquals(1, d1.getBeginningInv());
 		assertEquals(2, d1.getProduction());
@@ -178,6 +188,15 @@ public class FactoryTest {
 		assertTrue(cat.equals("AMPM") || cat.equals("PMAM"));
 	}
 	
-	
+	@Test
+	public void dailyHeaderComputeTest()
+	{
+		DailyHeader d=DailyHeaderHelper.align(dailyHeader);
+		assertEquals(3000, d.getRemittance().intValue());
+		assertEquals(80, d.getExpenses().intValue());
+		assertEquals(36, d.getTotal().intValue());
+		assertEquals(-44, d.getGrandTotal().intValue());
+		assertEquals(3044, d.getDifference().intValue());
+	}
 	
 }

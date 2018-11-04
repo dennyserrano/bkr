@@ -30,6 +30,10 @@ public class DailyHeader implements java.io.Serializable {
 	private BigDecimal grandTotal;
 	private BigDecimal remittance;
 	private BigDecimal difference;
+	private BigDecimal amExpenses;
+	private BigDecimal pmExpenses;
+	private BigDecimal amRemittance;
+	private BigDecimal pmRemittance;
 	private Set<DailyDetail> dailyDetails = new HashSet<>();
 
 	public DailyHeader() {
@@ -117,6 +121,42 @@ public class DailyHeader implements java.io.Serializable {
 
 	public void setDifference(BigDecimal difference) {
 		this.difference = difference;
+	}
+
+	@Column(name = "am_expenses", nullable = false, precision = 10, scale = 2)
+	public BigDecimal getAmExpenses() {
+		return amExpenses;
+	}
+
+	public void setAmExpenses(BigDecimal amExpenses) {
+		this.amExpenses = amExpenses;
+	}
+
+	@Column(name = "pm_expenses", nullable = false, precision = 10, scale = 2)
+	public BigDecimal getPmExpenses() {
+		return pmExpenses;
+	}
+
+	public void setPmExpenses(BigDecimal pmExpenses) {
+		this.pmExpenses = pmExpenses;
+	}
+
+	@Column(name = "am_remittance", nullable = false, precision = 10, scale = 2)
+	public BigDecimal getAmRemittance() {
+		return amRemittance;
+	}
+
+	public void setAmRemittance(BigDecimal amRemittance) {
+		this.amRemittance = amRemittance;
+	}
+
+	@Column(name = "pm_remittance", nullable = false, precision = 10, scale = 2)
+	public BigDecimal getPmRemittance() {
+		return pmRemittance;
+	}
+
+	public void setPmRemittance(BigDecimal pmRemittance) {
+		this.pmRemittance = pmRemittance;
 	}
 	
 	

@@ -12,7 +12,12 @@ public class DailyHeaderHelper {
 		dh.setRemittance(dh.getAmRemittance().add(dh.getPmRemittance()));
 		BigDecimal total=BigDecimal.ZERO;
 		for(DailyDetail dd:dh.getDailyDetailses())
-				total=total.add(dd.getAmount());
+		{
+			dd.setTgafs(dd.getBeginningInv()+dd.getProduction());
+			dd.setSales(dd.getTgafs()-dd.getEndingInv());
+			dd.setAmount(new BigDecimal(dd.getSales()).multiply(dd.getTemplateDetails().getPrice()));
+			total=total.add(dd.getAmount());
+		}
 		
 		dh.setTotal(total);
 		dh.setGrandTotal(dh.getTotal().subtract(dh.getExpenses()));

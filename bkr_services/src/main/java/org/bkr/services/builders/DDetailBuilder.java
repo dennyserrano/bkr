@@ -19,6 +19,7 @@ public class DDetailBuilder {
 	private DHeader parent;
 	private TemplateDetail templateDetail;
 	private Convertable<TemplateDetail, TDetail> converter;
+	private static final Convertable<DailyDetail,DDetail> dailyDetailConverter=new DailyDetailConvert();
 	private DailyDetail dailyDetail;
 	
 	public DDetailBuilder(Convertable<TemplateDetail, TDetail> converter) {
@@ -45,24 +46,14 @@ public class DDetailBuilder {
 	
 	public DDetail build()
 	{
-		DDetail detail=new DDetail();
-//		detail.set
-//		detail.setBread(breadConverter.convert(templateDetail.getMasterBreadList()));
-		detail.setDailyHeaderId(parent.getId());
-//		detail.setTemplateId(templateDetail.getTemplate().getId());
-		detail.setTemplateDetail(converter.convert(templateDetail));
+		DDetail detail = new DDetail();
+		
 		if(dailyDetail!=null)
-		{
-			detail.setAmount(dailyDetail.getAmount());
-			detail.setBeginningInv(dailyDetail.getBeginningInv());
-			detail.setCategory(dailyDetail.getCategory());
-			detail.setEndingInv(dailyDetail.getEndingInv());
-			detail.setId(dailyDetail.getId());
-			detail.setProduction(dailyDetail.getProduction());
-			detail.setSales(dailyDetail.getSales());
-//			detail.setTemplateId(dailyDetail.getTemplateDetails().getTemplate().getId());
-			detail.setTgafs(dailyDetail.getTgafs());
-		}
+			detail=dailyDetailConverter.convert(dailyDetail);
+		
+		detail.setDailyHeaderId(parent.getId());
+		detail.setTemplateDetail(converter.convert(templateDetail));
+		
 		return detail;
 	}
 	

@@ -20,7 +20,7 @@ public class DailyHeaderConvert implements Convertable<DailyHeader, DHeader>
 		dh.setAmExpenses(head.getAmExpenses());
 		dh.setAmRemittance(head.getAmRemittance());
 		dh.setPmExpenses(head.getPmExpenses());
-		dh.setPmRemittance(head.getRemittance());
+		dh.setPmRemittance(head.getPmRemittance());
 		return dh;
 	}
 

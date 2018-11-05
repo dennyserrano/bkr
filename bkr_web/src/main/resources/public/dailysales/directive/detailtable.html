@@ -16,17 +16,17 @@
 					<tbody>
 
 						<tr ng-repeat="item in head.list">
-							<td>{{item.breadName}}</td>
-							<td>{{item.price}}</td>
+							<td>{{item.templateDetail.breadName}}</td>
+							<td>{{item.templateDetail.price}}</td>
 							<td><input type="text" class="form-control"
 								ng-model="item.beginningInv"></td>
 							<td><input type="text" class="form-control"
 								ng-model="item.production"></td>
 							<td><input type="text" class="form-control"
 								ng-model="item.endingInv"></td>
-							<td>{{item.tgafs=item.production-item.beginningInv}}</td>
+							<td>{{item.tgafs=item.production+item.beginningInv}}</td>
 							<td>{{item.sales=item.tgafs-item.endingInv}}</td>
-							<td>{{item.amount=item.sales*item.price}}</td>
+							<td>{{item.amount=item.sales*item.templateDetail.price}}</td>
 						</tr>
 
 					</tbody>
@@ -54,5 +54,3 @@
 						<td>{{head.difference=head.remittance-head.grandTotal}}</td>
 					</tr>
 				</table>
-				
-				NEED STORAGE FOR REMITTANCE AND GRAND TOTAL!!

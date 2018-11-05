@@ -1,4 +1,4 @@
-<table id="amTable" class="table table-bordred table-striped">
+				<table id="amTable" class="table table-bordred table-striped">
 
 					<thead>
 
@@ -17,40 +17,40 @@
 
 						<tr ng-repeat="item in head.list">
 							<td>{{item.templateDetail.breadName}}</td>
-							<td>{{item.templateDetail.price}}</td>
-							<td><input type="text" class="form-control"
+							<td>{{item.templateDetail.price | number}}</td>
+							<td><input type="number" class="form-control"
 								ng-model="item.beginningInv"></td>
-							<td><input type="text" class="form-control"
+							<td><input type="number" class="form-control"
 								ng-model="item.production"></td>
-							<td><input type="text" class="form-control"
+							<td><input type="number" class="form-control"
 								ng-model="item.endingInv"></td>
-							<td>{{item.tgafs=item.production+item.beginningInv}}</td>
-							<td>{{item.sales=item.tgafs-item.endingInv}}</td>
-							<td>{{item.amount=item.sales*item.templateDetail.price}}</td>
+							<td>{{item.tgafs=item.production+item.beginningInv | number}}</td>
+							<td>{{item.sales=item.tgafs-item.endingInv | number}}</td>
+							<td>{{item.amount=item.sales*item.templateDetail.price | number:2}}</td>
 						</tr>
 
 					</tbody>
 				</table>
 
-				<table align="right" >
+				<table align="right">
 					<tr>
 						<td>Total:</td>
-						<td>{{head.total=getTotal()}}</td>
+						<td style="text-align: right;">{{head.total=getTotal()|number:2}}</td>
 					</tr>
 					<tr>
 						<td>Expenses:</td>
-						<td><input type="text" class="form-control" ng-model="head.expenses"></td>
+						<td><input type="number" style="text-align: right;" class="form-control number" ng-model="head.expenses"></td>
 					</tr>
 					<tr>
 						<td>Grand Total:</td>
-						<td>{{head.grandTotal=head.expenses-head.total}}</td>
+						<td style="text-align: right;">{{head.grandTotal=head.expenses-head.total|number:2}}</td>
 					</tr>
 					<tr>
 						<td>Cash Remittance:</td>
-						<td><input type="text" class="form-control" ng-model="head.remittance"></td>
+						<td><input type="number" style="text-align: right;" class="form-control" ng-model="head.remittance"></td>
 					</tr>
 					<tr>
 						<td>Difference:</td>
-						<td>{{head.difference=head.remittance-head.grandTotal}}</td>
+						<td style="text-align: right;">{{head.difference=head.remittance-head.grandTotal|number:2}}</td>
 					</tr>
 				</table>

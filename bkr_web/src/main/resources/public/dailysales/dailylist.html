@@ -46,11 +46,11 @@
 
 						<tr ng-repeat="header in headerList">
 							<td>{{header.date}}</td>
-							<td>{{header.total}}</td>
-							<td>{{header.expenses}}</td>
-							<td>{{header.grandTotal}}</td>
-							<td>{{header.remittance}}</td>
-							<td>{{header.difference}}</td>
+							<td>{{header.total|number:2}}</td>
+							<td>{{header.expenses|number:2}}</td>
+							<td>{{header.grandTotal|number:2}}</td>
+							<td>{{header.remittance|number:2}}</td>
+							<td>{{header.difference|number:2}}</td>
 							<td><a ng-href="#!templatedetails/{{100}}"> <img
 									style="width: 25px; height: 25px;"
 									src="../img/si-glyph-pencil.svg" />

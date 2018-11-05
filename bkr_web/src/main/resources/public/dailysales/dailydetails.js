@@ -1,4 +1,4 @@
-app.controller("dailyDetailsCtrl",function($timeout,$scope){
+app.controller("dailyDetailsCtrl",function($timeout,$scope,BreadService){
 	
 	
 	var today = new Date();
@@ -35,6 +35,7 @@ app.controller("dailyDetailsCtrl",function($timeout,$scope){
 		there($scope.header,$scope.amHeader,$scope.pmHeader);
 		console.log($scope.header);
 	}
+	
 	$scope.tabChange=function(amHeader)
 	{
 
@@ -82,4 +83,10 @@ app.controller("dailyDetailsCtrl",function($timeout,$scope){
 		$( "#tabs" ).tabs();
 	});
 	
+	
+	BreadService.get(1,function(response){
+		console.log(response);
+	},function(response){
+		console.log(response);
+	})
 })

@@ -21,7 +21,7 @@ public class TemplateController {
 	@RequestMapping("/all")
 	public List<THeader> all()
 	{
-		return TemplateFactory.generate(templateService.findAll());
+		return TemplateFactory.generateHead(templateService.findAll());
 	}
 	
 	@RequestMapping("/find")

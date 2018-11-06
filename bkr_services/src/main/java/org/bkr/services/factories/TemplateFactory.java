@@ -46,6 +46,15 @@ public class TemplateFactory {
 		return t;
 	}
 	
+	public static List<THeader> generateHead(List<Template> header)
+	{
+		ArrayList<THeader> al=new ArrayList<>();
+		header.forEach(t->{
+			 al.add(templateConverter.convert(t));
+		});
+		return al;
+	}
+	
 	public static List<THeader> generate(List<Template> header)
 	{
 		ArrayList<THeader> al=new ArrayList<>();

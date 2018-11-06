@@ -10,5 +10,6 @@ public interface TemplateDetailService {
 	public TemplateDetail save(TemplateDetail td);
 	public Set<TemplateDetail> save(Set<TemplateDetail> s);
 	public List<TemplateDetail> findByTemplateId(long templateId);
+	public void delete(Long id);
 	public TemplateDetail findById(long id);
 }

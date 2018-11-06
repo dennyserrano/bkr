@@ -5,6 +5,7 @@ import org.bkr.services.conversions.TemplateDetailConvert;
 import org.bkr.services.service.interfaces.TemplateDetailService;
 import org.bkr.web.TDetail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,7 @@ public class TemplateDetailController {
 	private static final TemplateDetailConvert converter=new TemplateDetailConvert();
 	
 	@RequestMapping(method =RequestMethod.POST, value= "/save")
-	public TDetail save(TDetail detail)
+	public TDetail save(@RequestBody TDetail detail)
 	{
 		TemplateDetail td= converter.trevnoc(detail);
 		
@@ -32,5 +33,12 @@ public class TemplateDetailController {
 		return converter.convert(detailService.findById(id));
 	}
 	
+	@RequestMapping(method =RequestMethod.DELETE, value= "/delete")
+	public void delete(@RequestBody TDetail detail)
+	{
+		TemplateDetail td= converter.trevnoc(detail);
+		
+		detailService.delete(td.getId());
+	}
 	
 }

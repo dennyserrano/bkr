@@ -46,4 +46,11 @@ public class TemplateDetailServiceImpl implements TemplateDetailService {
 		return tdr.findById(id).get();
 	}
 
+	@Override
+	public void delete(Long id) {
+		TemplateDetail t= new TemplateDetail();
+		t.setId(id);
+		tdr.delete(t);
+	}
+
 }

@@ -30,11 +30,6 @@ app.controller("dailyDetailsCtrl",function($timeout,$scope,BreadService){
 			difference:0,
 			list:[]
 	};
-
-	$scope.click=function(){
-		there($scope.header,$scope.amHeader,$scope.pmHeader);
-		console.log($scope.header);
-	}
 	
 	$scope.tabChange=function(amHeader)
 	{
@@ -83,8 +78,11 @@ app.controller("dailyDetailsCtrl",function($timeout,$scope,BreadService){
 		$( "#tabs" ).tabs();
 	});
 	
-	
-	BreadService.get(1,function(response){
+	var d={
+	    "breadName": "pandesal1111",
+	    "price": 1
+	}
+	BreadService.save(d,function(response){
 		console.log(response);
 	},function(response){
 		console.log(response);

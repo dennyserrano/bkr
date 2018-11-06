@@ -27,7 +27,7 @@ public class DailyHeaderController {
 	@RequestMapping("/all")
 	public List<DHeader> all()
 	{
-		return DHeaderFactory.generate(dhs.findAll());
+		return DHeaderFactory.generateHead(dhs.findAll());
 	}
 	
 	@RequestMapping("/find")

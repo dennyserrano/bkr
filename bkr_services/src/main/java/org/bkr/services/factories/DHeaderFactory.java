@@ -73,5 +73,12 @@ public class DHeaderFactory {
 		return al;
 	}
 	
+	public static List<DHeader> generateHead(List<DailyHeader> list)
+	{
+		ArrayList<DHeader> al=new ArrayList<>();
+		list.forEach(i->{al.add(dailyHeaderConverter.convert(i));});
+		
+		return al;
+	}
 	
 }

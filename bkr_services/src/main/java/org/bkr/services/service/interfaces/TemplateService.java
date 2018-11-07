@@ -10,4 +10,5 @@ public interface TemplateService {
 	public Template findById(long id);
 	public Template fetchFullById(long id);
 	public List<Template> findAll();
+	public void delete(long id);
 }

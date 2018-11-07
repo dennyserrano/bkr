@@ -9,6 +9,7 @@ import org.bkr.web.THeader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,12 +31,19 @@ public class TemplateController {
 		return TemplateFactory.generate(templateService.findById(id));
 	}
 	
-	@RequestMapping("/save")
+	@RequestMapping(value= "/save",method=RequestMethod.POST)
 	public THeader save(@RequestBody THeader template)
 	{
 		Template t=TemplateFactory.generate(template);
 		templateService.save(t);
 		return TemplateFactory.generate(t);
+	}
+	
+	@RequestMapping(value= "/delete",method=RequestMethod.DELETE)
+	public void delete(@RequestBody THeader template)
+	{
+		Template t=TemplateFactory.generate(template);
+		templateService.delete(t.getId());
 	}
 	
 }

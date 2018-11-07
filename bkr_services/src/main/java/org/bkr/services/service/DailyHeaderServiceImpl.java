@@ -50,5 +50,12 @@ public class DailyHeaderServiceImpl implements DailyHeaderService {
 		return dhr.findById(id).get();
 	}
 
+	@Override
+	public void delete(long id) {
+		DailyHeader dh=new DailyHeader();
+		dh.setId(id);
+		dhr.delete(dh);
+	}
+
 	
 }

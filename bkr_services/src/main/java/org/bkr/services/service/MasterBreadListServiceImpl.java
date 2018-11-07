@@ -34,4 +34,10 @@ public class MasterBreadListServiceImpl implements MasterBreadListService {
 		return al;
 	}
 
+	@Override
+	public void delete(long id) {
+		MasterBreadList mbl=new MasterBreadList(id);
+		mblr.delete(mbl);
+	}
+
 }

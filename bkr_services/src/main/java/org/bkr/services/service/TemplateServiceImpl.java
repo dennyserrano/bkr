@@ -56,6 +56,12 @@ public class TemplateServiceImpl implements TemplateService {
 		return al;
 	}
 
+	@Override
+	public void delete(long id) {
+		Template t=new Template(id);
+		tr.delete(t);
+	}
+
 	
 	
 }

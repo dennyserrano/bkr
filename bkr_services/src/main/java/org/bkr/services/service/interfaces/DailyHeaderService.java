@@ -8,4 +8,5 @@ public interface DailyHeaderService {
 	public DailyHeader save(DailyHeader dh);
 	public List<DailyHeader> findAll();
 	public DailyHeader findById(long id);
+	public void delete(long id);
 }

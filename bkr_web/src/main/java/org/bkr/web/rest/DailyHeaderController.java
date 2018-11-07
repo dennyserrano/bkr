@@ -14,6 +14,7 @@ import org.bkr.web.DHeader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +30,7 @@ public class DailyHeaderController {
 	{
 		return DHeaderFactory.generateHead(dhs.findAll());
 	}
+
 	
 	@RequestMapping("/find")
 	public DHeader find(@RequestParam("y") long id)
@@ -44,7 +46,7 @@ public class DailyHeaderController {
 		return DHeaderFactory.createNew(t);
 	}
 	
-	@RequestMapping("/save")
+	@RequestMapping(value="/save",method=RequestMethod.POST)
 	public DHeader save(@RequestBody DHeader dhead)
 	{
 		
@@ -61,6 +63,21 @@ public class DailyHeaderController {
 		
 		dhs.save(dh);
 		return DHeaderFactory.generate(dh);
+	}
+	
+	@RequestMapping(value="/delete",method=RequestMethod.DELETE)
+	public void delete(@RequestBody DHeader dhead)
+	{
+		DailyHeader dh=null;
+			try {
+				dh = DailyHeaderFactory.generate(dhead);
+			} catch (DependencyException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		dhs.delete(dh.getId());
+		
+		
 	}
 	
 }

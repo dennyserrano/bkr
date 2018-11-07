@@ -55,7 +55,7 @@ public class DHeaderFactory {
 		if(dh.getDailyDetailses()!=null && dh.getDailyDetailses().size()!=0)
 			for(DailyDetail d:dh.getDailyDetailses())
 			{
-				DDetail ddetail=detailBuilder.setDetail(d).setParent(e).setTemplateDetail(d.getTemplateDetails()).build();
+				DDetail ddetail=detailBuilder.setDetail(d).setParent(e).setTemplateDetail(d.getTemplateDetail()).build();
 				if(ddetail.getCategory().equals(DailyHeaderCategories.AM))
 					e.getAmList().add(ddetail);
 				else

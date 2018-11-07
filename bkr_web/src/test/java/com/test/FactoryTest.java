@@ -87,13 +87,13 @@ public class FactoryTest {
 		dailyHeader.setPmRemittance(new BigDecimal(2000));
 		
 		DailyDetail dd1=new DailyDetail(1, 2, 3, 4, 5, new BigDecimal(6), "AM");
-		dd1.setTemplateDetails(td1);
+		dd1.setTemplateDetail(td1);
 		DailyDetail dd2=new DailyDetail(1, 2, 3, 4, 5, new BigDecimal(6), "PM");
-		dd2.setTemplateDetails(td1);
+		dd2.setTemplateDetail(td1);
 		DailyDetail dd3=new DailyDetail(7, 8, 9, 10, 11, new BigDecimal(12), "AM");
-		dd3.setTemplateDetails(td2);
+		dd3.setTemplateDetail(td2);
 		DailyDetail dd4=new DailyDetail(7, 8, 9, 10, 11, new BigDecimal(12), "PM");
-		dd4.setTemplateDetails(td2);
+		dd4.setTemplateDetail(td2);
 		
 		dd1.setDailyHeader(dailyHeader);
 		dd2.setDailyHeader(dailyHeader);
@@ -174,7 +174,7 @@ public class FactoryTest {
 		
 		for(DailyDetail d:dh.getDailyDetailses())		
 		{
-			if(d.getTemplateDetails().getMasterBreadList().getId()==bread1.getId())
+			if(d.getTemplateDetail().getMasterBreadList().getId()==bread1.getId())
 				al.add(d);
 		}
 		

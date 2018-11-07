@@ -15,7 +15,7 @@ public class DailyHeaderHelper {
 		{
 			dd.setTgafs(dd.getBeginningInv()+dd.getProduction());
 			dd.setSales(dd.getTgafs()-dd.getEndingInv());
-			dd.setAmount(new BigDecimal(dd.getSales()).multiply(dd.getTemplateDetails().getPrice()));
+			dd.setAmount(new BigDecimal(dd.getSales()).multiply(dd.getTemplateDetail().getPrice()));
 			total=total.add(dd.getAmount());
 		}
 		

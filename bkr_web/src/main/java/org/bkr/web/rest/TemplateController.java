@@ -40,10 +40,9 @@ public class TemplateController {
 	}
 	
 	@RequestMapping(value= "/delete",method=RequestMethod.DELETE)
-	public void delete(@RequestBody THeader template)
+	public void delete(@RequestParam("y") long id)
 	{
-		Template t=TemplateFactory.generate(template);
-		templateService.delete(t.getId());
+		templateService.delete(id);
 	}
 	
 }

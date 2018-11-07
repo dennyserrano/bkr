@@ -12,4 +12,6 @@ public interface TemplateDetailService {
 	public List<TemplateDetail> findByTemplateId(long templateId);
 	public void delete(Long id);
 	public TemplateDetail findById(long id);
+	public long countByTemplateIdAndBreadId(long templateId,long breadId);
+	public long countByBreadId(long breadId);
 }

@@ -34,11 +34,21 @@ public class TemplateDetailController {
 	}
 	
 	@RequestMapping(method =RequestMethod.DELETE, value= "/delete")
-	public void delete(@RequestBody TDetail detail)
+	public void delete(@RequestParam("y") long id)
 	{
-		TemplateDetail td= converter.trevnoc(detail);
-		
-		detailService.delete(td.getId());
+		detailService.delete(id);
+	}
+	
+	@RequestMapping("/countTandB")
+	public long count(@RequestParam("y")long templateId,@RequestParam("z")long breadId)
+	{
+		return detailService.countByTemplateIdAndBreadId(templateId, breadId);
+	}
+	
+	@RequestMapping("/countB")
+	public long count(@RequestParam("y") long breadId)
+	{
+		return detailService.countByBreadId(breadId);
 	}
 	
 }

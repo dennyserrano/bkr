@@ -11,6 +11,7 @@ return {
 		{
 			delete $scope.model;
 		}
+		
 	},
     restrict: 'E',
     scope:{

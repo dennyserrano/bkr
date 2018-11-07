@@ -66,16 +66,10 @@ public class DailyHeaderController {
 	}
 	
 	@RequestMapping(value="/delete",method=RequestMethod.DELETE)
-	public void delete(@RequestBody DHeader dhead)
+	public void delete(@RequestParam("y") long templateId)
 	{
-		DailyHeader dh=null;
-			try {
-				dh = DailyHeaderFactory.generate(dhead);
-			} catch (DependencyException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		dhs.delete(dh.getId());
+		
+		dhs.delete(templateId);
 		
 		
 	}

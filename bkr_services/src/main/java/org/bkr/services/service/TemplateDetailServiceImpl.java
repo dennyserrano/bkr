@@ -53,4 +53,16 @@ public class TemplateDetailServiceImpl implements TemplateDetailService {
 		tdr.delete(t);
 	}
 
+	@Override
+	public long countByTemplateIdAndBreadId(long templateId, long breadId) {
+		// TODO Auto-generated method stub
+		return tdr.countByTemplateIdAndBreadId(breadId, templateId);
+	}
+
+	@Override
+	public long countByBreadId(long breadId) {
+		// TODO Auto-generated method stub
+		return tdr.countByBreadId(breadId);
+	}
+
 }

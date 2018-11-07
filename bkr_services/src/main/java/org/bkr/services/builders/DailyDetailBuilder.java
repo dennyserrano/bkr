@@ -38,7 +38,7 @@ public class DailyDetailBuilder{
 	{
 		DailyDetail dd=basicConverter.trevnoc(detail);
 		TemplateDetailBuilder tdb=new TemplateDetailBuilder(templateDetailConverter);
-		dd.setTemplateDetails(
+		dd.setTemplateDetail(
 								 tdb.setDetail(detail.getTemplateDetail())
 								 .setHead(new Template(detail.getTemplateDetail().getTemplateId()))
 								 .build()

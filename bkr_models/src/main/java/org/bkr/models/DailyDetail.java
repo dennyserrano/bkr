@@ -82,11 +82,11 @@ public class DailyDetail implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 //	@JoinColumn(name = "template_detail_id")
-	public TemplateDetail getTemplateDetails() {
+	public TemplateDetail getTemplateDetail() {
 		return this.templateDetail;
 	}
 
-	public void setTemplateDetails(TemplateDetail templateDetails) {
+	public void setTemplateDetail(TemplateDetail templateDetails) {
 		this.templateDetail = templateDetails;
 	}
 

@@ -43,10 +43,9 @@ public class MasterBreadListController
 	}
 	
 	@RequestMapping(value="/delete",method=RequestMethod.DELETE)
-	public void delete(@RequestBody Bread bread)
+	public void delete(@RequestParam("y") long id)
 	{
-		MasterBreadList mbl= MasterBreadListFactory.generate(bread);
-		breadService.delete(mbl.getId());
+		breadService.delete(id);
 	}
 	
 }

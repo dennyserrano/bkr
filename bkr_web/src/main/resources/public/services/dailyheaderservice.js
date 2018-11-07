@@ -22,6 +22,12 @@ app.service("DailyHeaderService",function($http,ConfigService){
 		.catch(function(response){failCallBack(response);});
 	}
 	
+	this.delete=function(data,successCallBack,failCallBack){
+		$http.delete(url+"/delete",data)
+		.then(function(response){successCallBack(response.data);})
+		.catch(function(response){failCallBack(response);});
+	}
+	
 	this.createNew=function(templateId,successCallBack,failCallBack)
 	{
 		$http.get(url+"/createNew",{

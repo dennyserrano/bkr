@@ -29,4 +29,10 @@ app.service("TemplateService",function($http,ConfigService){
 		.catch(function(response){failCallBack(response);});
 	}
 	
+	this.delete=function(data,successCallBack,failCallBack){
+		$http.delete(url+"/delete",data)
+		.then(function(response){successCallBack(response.data);})
+		.catch(function(response){failCallBack(response);});
+	}
+	
 })

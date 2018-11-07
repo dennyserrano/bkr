@@ -1,16 +1,15 @@
 app.controller("breadListCtrl",function($scope,BreadService,$timeout){
 
 	$scope.breadList=[];
-	$scope.doFade = false;
 	
+	$scope.toastUtil={};
 	$scope.modalSave=function(){
 		BreadService.save($scope.breadModel,function(){
 			fetch();
+			$scope.toastUtil.success("Save Successful!");
 			$scope.breadModel=null;
 		},function(response){
-			$scope.doFade=false;
-			$scope.errorMsg=response;
-			errorTimeout();
+			$scope.toastUtil.fail(response);
 		});
 	}
 	
@@ -24,11 +23,10 @@ app.controller("breadListCtrl",function($scope,BreadService,$timeout){
 		if(ans)
 		{
 			BreadService.delete(model,function(){
+				$scope.toastUtil.success("Delete Successful!");
 				fetch();
 			},function(response){
-				$scope.doFade=false;
-				$scope.errorMsg=response;
-				errorTimeout();
+				$scope.toastUtil.fail(response);
 			});
 		}
 		
@@ -42,13 +40,6 @@ app.controller("breadListCtrl",function($scope,BreadService,$timeout){
 		BreadService.listAll(function(response){
 			$scope.breadList=response;
 		});
-	}
-	
-	function errorTimeout(){
-		$timeout(function(){
-		      $scope.doFade = true;
-		      $scope.errorMsg=null;
-		    }, 2500);
 	}
 	
 	fetch();

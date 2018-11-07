@@ -19,16 +19,16 @@ app.service("BreadService",function($http,ConfigService,TemplateDetailService){
 	
 	this.save=function(data,successCallBack,failCallBack){
 		
+		if(angular.isUndefined(data.id))
+			doSave(data,successCallBack,failCallBack);
+		else
 		TemplateDetailService.countByBreadId(data.id,function(response){
 			
 			if(response>0)
 				failCallBack("Unable to make changes to this item because it has been assigned to a template");
 			else
-				{
-					$http.post(url+"/save",data)
-					.then(function(response){successCallBack(response.data);})
-					.catch(function(response){failCallBack(response);});
-				}
+					doSave(data,successCallBack,failCallBack);
+				
 			
 		},function(response){
 			failCallBack(response);
@@ -53,6 +53,12 @@ app.service("BreadService",function($http,ConfigService,TemplateDetailService){
 		},function(response){failCallBack(response);});
 		
 		
+	}
+	
+	function doSave(data,successCallBack,failCallBack){
+		$http.post(url+"/save",data)
+		.then(function(response){successCallBack(response.data);})
+		.catch(function(response){failCallBack(response);});
 	}
 	
 })

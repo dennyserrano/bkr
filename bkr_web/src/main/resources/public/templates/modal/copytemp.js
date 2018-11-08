@@ -1,17 +1,14 @@
-app.directive("copyTemp",function(){
+app.directive("copyTemp",function(TemplateService){
 	
 	return{
 		controller:function($scope){
-			$scope.templateList=[
-				{
-					id:1,
-					name:"t1"
-				},
-				{
-					id:2,
-					name:"t2"
-				}
-			];
+			$scope.templateList=[];
+			
+			TemplateService.listAll(function(response){
+				$scope.templateList=response;
+				$scope.model=response[0];
+			},function(response){})
+			
 		},
 		restrict:"E",
 		scope:{

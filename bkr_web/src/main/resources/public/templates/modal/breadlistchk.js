@@ -1,25 +1,8 @@
-app.directive("breadListCheckList",function(){
+app.directive("breadListCheckList",function(BreadService){
 
 return{
 	controller:function($scope){
-		$scope.breadList=[
-			{
-				id:1,
-				breadName:"pandesal",
-				price:100
-			},
-			{
-				id:2,
-				breadName:"monay",
-				price:200
-			},
-			{
-				id:3,
-				breadName:"hopia",
-				price:200
-			}
-			
-		];
+		$scope.breadList=[];
 		
 		$scope.isAll=true;
 		
@@ -47,7 +30,12 @@ return{
 				$scope.breads.push($scope.breadList[x]);
 		}
 		
-		init();
+		BreadService.listAll(function(response){
+			$scope.breadList=response;
+			init();
+		},function(response){})
+		
+		
 	},
 	restrict:"E",
 	

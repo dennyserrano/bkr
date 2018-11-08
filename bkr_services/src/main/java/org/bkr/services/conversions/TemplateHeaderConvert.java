@@ -12,6 +12,7 @@ public class TemplateHeaderConvert implements Convertable<Template, THeader>{
 		THeader t=new THeader();
 		t.setName(head.getName());
 		t.setId(head.getId());
+		t.setActive(head.isActive());
 		return t;
 	}
 
@@ -20,6 +21,7 @@ public class TemplateHeaderConvert implements Convertable<Template, THeader>{
 		Template t=new Template();
 		t.setName(head.getName());
 		t.setId(head.getId());
+		t.setActive(head.isActive());
 		return t;
 	}
 	

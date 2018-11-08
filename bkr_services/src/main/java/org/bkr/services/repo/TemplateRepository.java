@@ -1,5 +1,7 @@
 package org.bkr.services.repo;
 
+import java.util.List;
+
 import org.bkr.models.Template;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -11,5 +13,7 @@ public interface TemplateRepository extends CrudRepository<Template, Long>{
 			+ "JOIN FETCH td.masterBreadList "
 			+ "WHERE t.id=?1")
 	public Template fetchFullById(long id);
+	public List<Template> findByActive(boolean val);
+	
 	
 }

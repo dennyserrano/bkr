@@ -19,46 +19,23 @@ app.service("BreadService",function($http,ConfigService,TemplateDetailService){
 	
 	this.save=function(data,successCallBack,failCallBack){
 		
-		if(angular.isUndefined(data.id))
-			doSave(data,successCallBack,failCallBack);
-		else
-		TemplateDetailService.countByBreadId(data.id,function(response){
-			
-			if(response>0)
-				failCallBack("Unable to make changes to this item because it has been assigned to a template");
-			else
-					doSave(data,successCallBack,failCallBack);
-				
-			
-		},function(response){
-			failCallBack(response);
-		});
-		
-		
+		$http.post(url+"/save",data)
+		.then(function(response){successCallBack(response.data);})
+		.catch(function(response){failCallBack(response.data.message);});
 		
 	}
 	
 	this.delete=function(data,successCallBack,failCallBack){
 		
-		TemplateDetailService.countByBreadId(data.id,function(response){
-			if(response>0)
-				failCallBack("Unable to delete this item because it has been assigned to a template");
-			else{
-				$http.delete(url+"/delete",{
-					params:{"y":data.id}
-				})
-				.then(function(response){successCallBack(response.data);})
-				.catch(function(response){failCallBack(response);});
-			}
-		},function(response){failCallBack(response);});
-		
-		
-	}
 	
-	function doSave(data,successCallBack,failCallBack){
-		$http.post(url+"/save",data)
+		$http.delete(url+"/delete",{
+			params:{"y":data.id}
+		})
 		.then(function(response){successCallBack(response.data);})
-		.catch(function(response){failCallBack(response);});
+		.catch(function(response){failCallBack(response.data.message);});
+			
+		
+		
 	}
 	
 })

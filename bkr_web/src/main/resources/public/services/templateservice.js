@@ -11,12 +11,6 @@ app.service("TemplateService",function($http,ConfigService){
 		.catch(function(response){failCallBack(response);});
 	}
 	
-	this.deleteDetail=function(data,successCallBack,failCallBack){
-		$http.delete(detailUrl+"/delete",data)
-		.then(function(response){successCallBack(response.data);})
-		.catch(function(response){failCallBack(response);});
-	}
-	
 	this.listAll=function(successCallBack,failCallBack){
 		$http.get(url+"/all")
 		.then(function(response){successCallBack(response.data);})
@@ -26,11 +20,22 @@ app.service("TemplateService",function($http,ConfigService){
 	this.save=function(data,successCallBack,failCallBack){
 		$http.post(url+"/save",data)
 		.then(function(response){successCallBack(response.data);})
-		.catch(function(response){failCallBack(response);});
+		.catch(function(response){failCallBack(response.data.message);});
 	}
 	
 	this.delete=function(data,successCallBack,failCallBack){
-		$http.delete(url+"/delete",data)
+		$http.delete(url+"/delete",{
+			params:{"y":data.id}
+		})
+		.then(function(response){successCallBack(response.data);})
+		.catch(function(response){failCallBack(response);});
+	}
+	
+	this.getWReadOnly=function(id,successCallBack,failCallBack)
+	{
+		$http.get(url+"/findwro",{
+			params:{"y":id}
+		})
 		.then(function(response){successCallBack(response.data);})
 		.catch(function(response){failCallBack(response);});
 	}

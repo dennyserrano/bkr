@@ -4,7 +4,7 @@ app.config(function($routeProvider) {
     .when("/breadlist", {
         templateUrl : "../masterbread/breadlist.html"
     })
-    .when("/templates", {
+    .when("/templates/:msgId", {
         templateUrl : "../templates/templatelist.html"
     })
     .when("/templatedetails/:templateId", {

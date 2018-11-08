@@ -16,4 +16,10 @@ public class DailyDetailServiceImpl implements DailyDetailService {
 		return ddr.countBreadId(id);
 	}
 
+	@Override
+	public long countByTemplateId(long id) {
+		
+		return ddr.countTemplateId(id);
+	}
+
 }

@@ -11,4 +11,6 @@ public interface DailyDetailRepository extends CrudRepository<DailyDetail, Long>
 	List<DailyDetail> findDailyHeaderById(long id);
 	@Query("select count(e) from DailyDetail e where e.templateDetail.masterBreadList.id = ?1")
 	long countBreadId(long masterBreadId);
+	@Query("select count(e) from DailyDetail e where e.templateDetail.template.id = ?1")
+	long countTemplateId(long templateId);
 }

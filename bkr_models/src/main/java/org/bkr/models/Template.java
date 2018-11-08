@@ -21,6 +21,7 @@ public class Template implements java.io.Serializable {
 
 	private Long id;
 	private String name;
+	private boolean active;
 	private Set<TemplateDetail> templateDetails = new HashSet<>();
 
 	public Template() {
@@ -66,4 +67,13 @@ public class Template implements java.io.Serializable {
 		this.templateDetails = templateDetails;
 	}
 
+	@Column(name = "active", length = 1)
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
 }

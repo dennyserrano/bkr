@@ -1,5 +1,8 @@
 <div class="container" ng-controller="templateDetailCtrl">
-
+	<toast utility="toastUtility" ></toast>
+	<div class="row" ng-if="template.readonly">
+		This template is being used by a daily sales report. This can't be edited
+	</div>
 	<div class="row">
 		<div class="col"></div>
 		<div class="col"></div>
@@ -10,26 +13,26 @@
 		<div class="col"></div>
 		<div class="col"></div>
 		<div class="col">
-			<a href="#" onclick="return false" data-toggle="modal" data-target="#breadlistchk">
-				<img src="../img/add.png" > Bread List
+			<a href="#" onclick="return false" data-toggle="modal" ng-if="!template.readonly"
+				data-target="#breadlistchk"> <img src="../img/add.png">
+				Item List
 			</a>
 		</div>
-		
-		<div class="col" ng-if="template.id==0">
-			<a href="#" onclick="return false" data-toggle="modal" data-target="#copytemp">
-				<img src="../img/add.png" > Copy Template
+
+		<div class="col" ng-if="template.id==null && !template.readonly">
+			<a href="#" onclick="return false" data-toggle="modal"
+				data-target="#copytemp"> <img src="../img/add.png"> Copy
+				Template
 			</a>
 		</div>
-		
+
 	</div>
 	<div class="row">
-
-
 		<div class="col-md-12">
 			<h3>Template Items of {{template.name}}</h3>
-			<div class="table-responsive">
+			<div class="table-responsive" ng-if="listSize()!==0 && !template.readonly" >
 
-				
+
 				<table id="mytable" class="table table-bordred table-striped">
 
 					<thead>
@@ -43,15 +46,15 @@
 					</thead>
 					<tbody>
 
-						<tr>
-							<td>pandecoco</td>
-							<td>1.00</td>
-							
-							<td>
-									<a href="#templatedetails" onclick="return false" >
-										<img  style="width:25px; height:25px;" src="../img/si-glyph-trash.svg"/>
-									</a>
-							</td>
+						<tr ng-repeat="detail in template.details">
+							<td>{{detail.breadName}}</td>
+							<td>{{detail.price|number:2}}</td>
+
+							<td><a href="#templatedetails" onclick="return false"
+								ng-click="delete(detail)"> <img
+									style="width: 25px; height: 25px;"
+									src="../img/si-glyph-trash.svg" />
+							</a></td>
 						</tr>
 
 					</tbody>
@@ -59,15 +62,44 @@
 				</table>
 
 				<div class="clearfix"></div>
-				
+
+				<div>
+					<button ng-click="save()">Save</button>
+				</div>
+			</div>
+			<div class="table-responsive" ng-if="listSize()!==0 && template.readonly" >
+
+
+				<table id="mytable" class="table table-bordred table-striped">
+
+					<thead>
+
+						<th>Bread Name</th>
+
+						<th>Price</th>
+					</thead>
+					<tbody>
+
+						<tr ng-repeat="detail in template.details">
+							<td>{{detail.breadName}}</td>
+							<td>{{detail.price|number:2}}</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<div class="clearfix"></div>
 
 			</div>
-
 		</div>
 
+
 	</div>
-	
+	<div ng-if="listSize()===0" class="row">No items to show</div>
+
 	<bread-list-check-list breads="breads" save="selectedBreadSave()"></bread-list-check-list>
 	<copy-temp model="selectedTemplate" save="templateSelectSave()"></copy-temp>
-	<template-name model="template.name" save="templateNameSave()" cancel="templateNameCancel()"></template-name>
+	<template-name model="template.name" save="templateNameSave()"
+		cancel="templateNameCancel()"></template-name>
 </div>

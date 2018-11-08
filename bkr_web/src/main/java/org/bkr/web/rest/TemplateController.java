@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.bkr.models.Template;
 import org.bkr.services.factories.TemplateFactory;
+import org.bkr.services.service.interfaces.DailyDetailService;
+import org.bkr.services.service.interfaces.DailyHeaderService;
 import org.bkr.services.service.interfaces.TemplateService;
 import org.bkr.web.THeader;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TemplateController {
 
 	@Autowired private TemplateService templateService;
+	@Autowired private DailyDetailService dailyDetailService;
 	
 	@RequestMapping("/all")
 	public List<THeader> all()
@@ -29,6 +32,15 @@ public class TemplateController {
 	public THeader get(@RequestParam("y") long id)
 	{
 		return TemplateFactory.generate(templateService.findById(id));
+	}
+	@RequestMapping("/findwro")
+	public THeader getWReadOnly(@RequestParam("y") long id)
+	{
+		THeader t= get(id);
+		if(dailyDetailService.countByTemplateId(id)>0)
+			t.setReadonly(true);
+		
+		return t;
 	}
 	
 	@RequestMapping(value= "/save",method=RequestMethod.POST)
@@ -43,6 +55,12 @@ public class TemplateController {
 	public void delete(@RequestParam("y") long id)
 	{
 		templateService.delete(id);
+	}
+	
+	@RequestMapping(value= "/activate")
+	public void activate(@RequestParam("y") long id)
+	{
+		templateService.setActive(id);
 	}
 	
 }

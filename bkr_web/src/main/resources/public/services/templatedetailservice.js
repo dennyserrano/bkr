@@ -23,4 +23,17 @@ app.service("TemplateDetailService",function($http,ConfigService){
 		.catch(function(response){failCallBack(response);});
 	}
 	
+	this.delete=function(data,successCallBack,failCallBack){
+		
+		
+		$http.delete(url+"/delete",{
+			params:{"y":data.id}
+		})
+		.then(function(response){successCallBack(response.data);})
+		.catch(function(response){failCallBack(response.data.message);});
+			
+		
+		
+	}
+	
 })

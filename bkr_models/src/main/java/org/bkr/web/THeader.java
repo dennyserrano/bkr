@@ -9,7 +9,8 @@ public class THeader {
 
 	private Long id;
 	private String name;
-	
+	private boolean active;
+	private boolean readonly;
 	private List<TDetail> details=new ArrayList<>();
 
 	public Long getId() {
@@ -34,6 +35,22 @@ public class THeader {
 
 	public void setDetails(List<TDetail> details) {
 		this.details = details;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public boolean isReadonly() {
+		return readonly;
+	}
+
+	public void setReadonly(boolean readonly) {
+		this.readonly = readonly;
 	}
 	
 	

@@ -1,18 +1,23 @@
 <div class="container" ng-controller="templateDetailCtrl">
 	<toast utility="toastUtility" ></toast>
 	<div class="row" ng-if="template.readonly">
-		This template is being used by a daily sales report. This can't be edited
-	</div>
-	<div class="row">
-		<div class="col"></div>
-		<div class="col"></div>
-		<div class="col"></div>
-		<div class="col"></div>
-		<div class="col"></div>
-		<div class="col"></div>
-		<div class="col"></div>
-		<div class="col"></div>
 		<div class="col">
+			<div style="margin-bottom: 50px">
+				This template is being used by a daily sales report. This can't be edited
+			</div>
+			
+		</div>
+	</div>
+	<div class="row top-buffer">
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col"></div>
+		<div class="col-sm-1">
 			<a href="#" onclick="return false" data-toggle="modal" ng-if="!template.readonly"
 				data-target="#breadlistchk"> <img src="../img/add.png">
 				Item List

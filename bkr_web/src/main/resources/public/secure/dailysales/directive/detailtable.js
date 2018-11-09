@@ -23,6 +23,6 @@ app.directive("detailTable",function(){
 		scope:{
 			head:"="
 		},
-		templateUrl:"../../../dailysales/directive/detailtable.html"
+		templateUrl:"../../../../secure/dailysales/directive/detailtable.html"
 	}
 })

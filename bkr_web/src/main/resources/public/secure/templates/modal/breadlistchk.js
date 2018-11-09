@@ -44,7 +44,7 @@ return{
 		breads:"=",
 		save:"&"
 	},
-	templateUrl:'../../../templates/modal/breadlistchk.html'
+	templateUrl:'../../../../secure/templates/modal/breadlistchk.html'
 }
 
 

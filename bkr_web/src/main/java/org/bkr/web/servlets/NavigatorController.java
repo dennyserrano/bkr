@@ -7,7 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class NavigatorController {
 
-	@GetMapping("/index")
+	@GetMapping("/")
+	public String i()
+	{
+		return "home.html";
+	}
+	
+	@GetMapping("/login")
 	public String index()
 	{
 		return "index.html";

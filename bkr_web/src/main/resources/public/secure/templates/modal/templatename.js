@@ -7,7 +7,7 @@ app.directive("templateName",function(){
 			save:"&",
 			cancel:"&"
 		},
-		templateUrl:"../../../templates/modal/templatename.html"
+		templateUrl:"../../../../secure/templates/modal/templatename.html"
 	}
 	
 })

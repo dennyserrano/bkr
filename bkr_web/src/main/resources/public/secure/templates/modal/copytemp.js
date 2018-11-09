@@ -15,7 +15,7 @@ app.directive("copyTemp",function(TemplateService){
 			model:"=",
 			save:"&"
 		},
-		templateUrl:"../../../templates/modal/copytemp.html"
+		templateUrl:"../../../../secure/templates/modal/copytemp.html"
 		
 	};
 	

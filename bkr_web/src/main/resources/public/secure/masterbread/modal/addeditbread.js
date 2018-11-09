@@ -18,7 +18,7 @@ return {
     	model:"=",
     	save:"&"
     },
-    templateUrl: '../../../masterbread/modal/addeditbread.html'
+    templateUrl: '../../../../secure/masterbread/modal/addeditbread.html'
   };
 
 });

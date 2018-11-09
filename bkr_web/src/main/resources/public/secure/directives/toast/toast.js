@@ -32,6 +32,6 @@ app.directive("toast",function($timeout){
 				
 			}
 		},
-		templateUrl:"../../../directives/toast/toast.html"
+		templateUrl:"../../../../secure/directives/toast/toast.html"
 	}
 });

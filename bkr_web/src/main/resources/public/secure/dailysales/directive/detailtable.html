@@ -20,11 +20,11 @@
 						<tr ng-repeat="item in head.list | orderBy:'order'">
 							<td>{{item.templateDetail.breadName}}</td>
 							<td>{{item.templateDetail.price | number:2}}</td>
-							<td><input type="number" class="form-control"
+							<td><input  type="text" class="number form-control" tabindex={{$index}}
 								ng-model="item.beginningInv"></td>
-							<td><input type="number" class="form-control"
+							<td><input type="number" class="form-control" tabindex=5
 								ng-model="item.production"></td>
-							<td><input type="number" class="form-control"
+							<td><input type="number" class="form-control" tabindex=10
 								ng-model="item.endingInv"></td>
 							<td>{{item.tgafs=item.production+item.beginningInv | number}}</td>
 							<td>{{item.sales=item.tgafs-item.endingInv | number}}</td>
@@ -41,7 +41,7 @@
 					</tr>
 					<tr>
 						<td>Expenses:</td>
-						<td><input type="number" style="text-align: right;" class="form-control number" ng-model="head.expenses"></td>
+						<td><input type="number" style="text-align: right;" tabindex=15 class="form-control" ng-model="head.expenses"></td>
 					</tr>
 					<tr>
 						<td>Grand Total:</td>
@@ -49,7 +49,7 @@
 					</tr>
 					<tr>
 						<td>Cash Remittance:</td>
-						<td><input type="number" style="text-align: right;" class="form-control" ng-model="head.remittance"></td>
+						<td><input type="number" style="text-align: right;" tabindex=20 class="form-control" ng-model="head.remittance"></td>
 					</tr>
 					<tr>
 						<td>Difference:</td>

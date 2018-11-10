@@ -73,6 +73,7 @@ app.controller("templateDetailCtrl",function($scope,$routeParams,$timeout,$locat
 	{
 		TemplateService.activate($scope.template.id,function(response){
 			$scope.template.active=true;
+			$scope.toastUtility.success("Template is now set to active");
 		},function(response){
 			$scope.toastUtility.fail("There was an error while trying to activate this template")
 		})

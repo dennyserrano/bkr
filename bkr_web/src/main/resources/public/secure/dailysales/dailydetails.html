@@ -1,15 +1,9 @@
-<!-- <div class="container"> -->
-<!-- 	<div class="row" style="border-style: solid;"> -->
-<!-- 		hello -->
-<!-- 	</div> -->
-<!-- 	<div class="row" style="border-style: solid;"> -->
-<!-- 		hi -->
-<!-- 	</div> -->
-<!-- </div> -->
-
 <div class="container" ng-controller="dailyDetailsCtrl">
-	<div class="row">Date: {{date}}</div>
-	<div id="tabs" class="row">
+	<toast utility="toastUtility"></toast>
+	<div class="row" ng-if="header">
+		<h3>{{date|date:'MMMM dd, yyyy'}}</h3>
+	</div>
+	<div id="tabs" class="row" ng-if="header">
 		<div>
 			<ul>
 				<li><a href="#am">AM</a></li>
@@ -30,5 +24,13 @@
 
 
 	</div>
+	<div class="row">
+		<div class="col">&nbsp</div>
+	</div>
+	
+	<div class="row " style="float: right;">
+		<button ng-click="save()">Save</button>
+	</div>
+	
 
 </div>

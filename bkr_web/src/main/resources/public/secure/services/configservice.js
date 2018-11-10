@@ -1,7 +1,7 @@
 app.service("ConfigService",function(){
 	
 	this.getBaseUrl=function(){
-		return "http://localhost:8080";
+		return "http://4e60383d.ngrok.io";
 	}
 	
 })

@@ -12,4 +12,5 @@ public interface TemplateService {
 	public List<Template> findAll();
 	public void delete(long id);
 	public void setActive(long id);
+	public Template getActive();
 }

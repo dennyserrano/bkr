@@ -1,3 +1,5 @@
+				
+				
 				<table id="amTable" class="table table-bordred table-striped">
 
 					<thead>
@@ -14,10 +16,10 @@
 
 					</thead>
 					<tbody>
-
-						<tr ng-repeat="item in head.list">
+	
+						<tr ng-repeat="item in head.list | orderBy:'order'">
 							<td>{{item.templateDetail.breadName}}</td>
-							<td>{{item.templateDetail.price | number}}</td>
+							<td>{{item.templateDetail.price | number:2}}</td>
 							<td><input type="number" class="form-control"
 								ng-model="item.beginningInv"></td>
 							<td><input type="number" class="form-control"
@@ -43,7 +45,7 @@
 					</tr>
 					<tr>
 						<td>Grand Total:</td>
-						<td style="text-align: right;">{{head.grandTotal=head.expenses-head.total|number:2}}</td>
+						<td style="text-align: right;">{{head.grandTotal=head.total-head.expenses|number:2}}</td>
 					</tr>
 					<tr>
 						<td>Cash Remittance:</td>
@@ -54,3 +56,4 @@
 						<td style="text-align: right;">{{head.difference=head.remittance-head.grandTotal|number:2}}</td>
 					</tr>
 				</table>
+	

@@ -16,6 +16,7 @@ public class TemplateDetailConvert implements Convertable<TemplateDetail,TDetail
 		td.setPrice(detail.getPrice());
 		td.setBreadName(detail.getMasterBreadList().getBreadName());
 		td.setId(detail.getId());
+		td.setOrder(detail.getOrder());
 		return td;
 	}
 
@@ -26,6 +27,7 @@ public class TemplateDetailConvert implements Convertable<TemplateDetail,TDetail
 		td.setMasterBreadList(new MasterBreadList(detail.getMasterBreadId()));
 		td.setTemplate(new Template(detail.getTemplateId()));
 		td.setPrice(detail.getPrice());
+		td.setOrder(detail.getOrder());
 		return td;
 	}
 }

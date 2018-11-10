@@ -18,6 +18,7 @@ app.directive("detailTable",function(){
 				return sum;
 			}
 			
+			
 		},
 		restrict:"E",
 		scope:{

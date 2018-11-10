@@ -40,4 +40,13 @@ app.service("TemplateService",function($http,ConfigService){
 		.catch(function(response){failCallBack(response);});
 	}
 	
+	this.activate=function(id,successCallBack,failCallBack)
+	{
+		$http.get(url+"/activate",{
+			params:{"y":id}
+		})
+		.then(function(response){successCallBack(response.data);})
+		.catch(function(response){failCallBack(response);});
+	}
+	
 })

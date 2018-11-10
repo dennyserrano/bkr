@@ -10,6 +10,7 @@ public class TDetail {
 	private long masterBreadId;
 	private String breadName;
 	private BigDecimal price;
+	private int order;
 	
 	private THeader head;
 
@@ -59,6 +60,14 @@ public class TDetail {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public int getOrder() {
+		return order;
+	}
+
+	public void setOrder(int order) {
+		this.order = order;
 	}
 	
 	

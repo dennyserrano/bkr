@@ -1,28 +1,55 @@
-app.controller("dailyListCtrl",function($scope){
+app.controller("dailyListCtrl",function($scope,$routeParams,$location,$timeout,DailyHeaderService){
 	
-	var today = new Date();
-	var dd = today.getDate();
-	var mm = today.getMonth()+1; //January is 0!
-	var yyyy = today.getFullYear();
-	today = mm + '/' + dd + '/' + yyyy;
+	$scope.headerList=[];
+	$scope.toastUtility={};
+	$scope.listSize=function(){
+		return $scope.headerList.length;
+	};
 	
-	$scope.headerList=
-		[
-			{
-				id:1,
-				date: today,
-				total:100000,
-				expenses:500,
-				grandTotal:100000,
-				remittance:100000,
-				difference:500
-			}
-		]
+	$scope.delete=function(header){
+		
+		var ans=confirm("Are you sure you want to delete this record?");
+		
+		if(ans)
+		{
+			DailyHeaderService.delete(header,function(response){
+				doFetch(function(response){
+					$scope.headerList=response;
+					$scope.toastUtility.success("Delete Successful");
+				},function(response){
+					$scope.toastUtility.fail("An error has occurred while trying to delete this item");
+				})
+			},function(response){
+				
+			})
+		}
+		
+	}
 	
-//	private Date date;
-//	private BigDecimal total;
-//	private BigDecimal expenses;
-//	private BigDecimal grandTotal;
-//	private BigDecimal remittance;
-//	private BigDecimal difference;
-})
+	function doFetch(successCall,failCall)
+	{
+		DailyHeaderService.listAll(successCall,failCall);
+	}
+	doFetch(function(response){
+		$scope.headerList=response;
+	},function(response){
+		$scope.toastUtility.fail("An error has occurred while trying to fetch daily sales summary");
+	})
+	
+	
+	$timeout(function () {
+		if(angular.isDefined($routeParams.msgId))
+		{
+			if($routeParams.msgId==='0')
+				$scope.toastUtility.success("Save Successful");
+			else if($routeParams.msgId==='1')
+				$scope.toastUtility.fail("Save Failed");
+			else
+				{
+					
+				}
+		}
+	});
+	
+	
+});

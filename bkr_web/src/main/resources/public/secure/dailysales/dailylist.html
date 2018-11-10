@@ -1,6 +1,6 @@
 
 <div class="container" ng-controller="dailyListCtrl">
-
+	<toast utility="toastUtility"></toast>
 	<div class="row">
 		<div class="col"></div>
 		<div class="col"></div>
@@ -12,7 +12,7 @@
 		<div class="col"></div>
 		<div class="col"></div>
 		<div class="col">
-			<a href="#!dailydetails" > <img src="../secure/img/add.png"> Create New
+			<a href="#!dailydetails/0" > <img src="../secure/img/add.png"> Create New
 			</a>
 
 		</div>
@@ -25,7 +25,7 @@
 			<div class="table-responsive">
 
 
-				<table id="mytable" class="table table-bordred table-striped">
+				<table id="mytable" class="table table-bordred table-striped" ng-if="listSize()!==0">
 
 					<thead>
 
@@ -45,17 +45,17 @@
 					<tbody>
 
 						<tr ng-repeat="header in headerList">
-							<td>{{header.date}}</td>
+							<td>{{header.date|date:'MMMM dd, yyyy'}}</td>
 							<td>{{header.total|number:2}}</td>
 							<td>{{header.expenses|number:2}}</td>
 							<td>{{header.grandTotal|number:2}}</td>
 							<td>{{header.remittance|number:2}}</td>
 							<td>{{header.difference|number:2}}</td>
-							<td><a ng-href="#!templatedetails/{{100}}"> <img
+							<td><a ng-href="#!dailydetails/{{header.id}}"> <img
 									style="width: 25px; height: 25px;"
 									src="../secure/img/si-glyph-pencil.svg" />
 							</a></td>
-							<td><a href="#templatedetails" onclick="return false">
+							<td><a href="#templatedetails" onclick="return false" ng-click="delete(header)">
 									<img style="width: 25px; height: 25px;"
 									src="../secure/img/si-glyph-trash.svg" />
 							</a></td>
@@ -73,6 +73,6 @@
 		</div>
 
 	</div>
-
+	<div ng-if="listSize()===0">No items to show</div>
 
 </div>

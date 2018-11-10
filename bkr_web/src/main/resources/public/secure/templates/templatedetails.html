@@ -16,7 +16,9 @@
 		<div class="col"></div>
 		<div class="col"></div>
 		<div class="col"></div>
-		<div class="col"></div>
+		<div class="col">
+			<a href="" ng-if="!template.active && template.id!==null" ng-click="setActive()">Set Active</a>
+		</div>
 		<div class="col-sm-1">
 			<a href="#" onclick="return false" data-toggle="modal" ng-if="!template.readonly"
 				data-target="#breadlistchk"> <img src="../secure/img/add.png">
@@ -45,7 +47,7 @@
 						<th>Bread Name</th>
 
 						<th>Price</th>
-
+						<th>Order</th>
 
 						<th>Delete</th>
 					</thead>
@@ -54,12 +56,15 @@
 						<tr ng-repeat="detail in template.details">
 							<td>{{detail.breadName}}</td>
 							<td>{{detail.price|number:2}}</td>
-
+							<td>
+								<input type="number" ng-model="detail.order"> 
+							</td>
 							<td><a href="#templatedetails" onclick="return false"
 								ng-click="delete(detail)"> <img
 									style="width: 25px; height: 25px;"
 									src="../secure/img/si-glyph-trash.svg" />
 							</a></td>
+							
 						</tr>
 
 					</tbody>

@@ -13,6 +13,11 @@ public interface TemplateRepository extends CrudRepository<Template, Long>{
 			+ "JOIN FETCH td.masterBreadList "
 			+ "WHERE t.id=?1")
 	public Template fetchFullById(long id);
+	
+	@Query("SELECT t FROM Template t "
+			+ "JOIN FETCH t.templateDetails td "
+			+ "JOIN FETCH td.masterBreadList "
+			+ "WHERE t.active=?1")
 	public List<Template> findByActive(boolean val);
 	
 	

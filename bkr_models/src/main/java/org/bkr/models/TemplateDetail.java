@@ -25,6 +25,7 @@ public class TemplateDetail implements java.io.Serializable {
 	private MasterBreadList masterBreadList;
 	private Template template;
 	private BigDecimal price;
+	private int order;
 	
 	public TemplateDetail() {
 	}
@@ -82,6 +83,15 @@ public class TemplateDetail implements java.io.Serializable {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	@Column(name="ordinal")
+	public int getOrder() {
+		return order;
+	}
+
+	public void setOrder(int order) {
+		this.order = order;
 	}
 	
 	

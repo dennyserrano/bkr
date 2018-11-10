@@ -40,9 +40,11 @@ public class DailyHeaderController {
 	
 	
 	@RequestMapping("/createnew")
-	public DHeader createNew(@RequestParam("y") long templateId)
+	public DHeader createNew()
 	{
-		Template t= templateService.findById(templateId);
+		Template t= templateService.getActive();
+		if(t==null)
+			return null;
 		return DHeaderFactory.createNew(t);
 	}
 	

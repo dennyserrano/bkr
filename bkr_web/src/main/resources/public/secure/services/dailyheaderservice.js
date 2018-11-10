@@ -23,16 +23,16 @@ app.service("DailyHeaderService",function($http,ConfigService){
 	}
 	
 	this.delete=function(data,successCallBack,failCallBack){
-		$http.delete(url+"/delete",data)
+		$http.delete(url+"/delete",{
+			params:{"y":data.id}
+		})
 		.then(function(response){successCallBack(response.data);})
 		.catch(function(response){failCallBack(response);});
 	}
 	
-	this.createNew=function(templateId,successCallBack,failCallBack)
+	this.createNew=function(successCallBack,failCallBack)
 	{
-		$http.get(url+"/createNew",{
-			params:{"y":templateId}
-		})
+		$http.get(url+"/createnew")
 		.then(function(response){successCallBack(response.data);})
 		.catch(function(response){failCallBack(response);});
 	}

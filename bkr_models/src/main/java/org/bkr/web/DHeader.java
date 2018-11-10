@@ -38,6 +38,10 @@ public class DHeader {
 		this.grandTotal = grandTotal;
 		this.remittance = remittance;
 		this.difference = difference;
+		this.amRemittance=BigDecimal.ZERO;
+		this.amExpenses=BigDecimal.ZERO;
+		this.pmExpenses=BigDecimal.ZERO;
+		this.pmRemittance=BigDecimal.ZERO;
 	}
 
 	public DHeader(Long id, Date date) {
@@ -50,6 +54,10 @@ public class DHeader {
 		this.setGrandTotal(BigDecimal.ZERO);
 		this.setRemittance(BigDecimal.ZERO);
 		this.setTotal(BigDecimal.ZERO);
+		this.amRemittance=BigDecimal.ZERO;
+		this.amExpenses=BigDecimal.ZERO;
+		this.pmExpenses=BigDecimal.ZERO;
+		this.pmRemittance=BigDecimal.ZERO;
 	}
 
 	public Long getId() {

@@ -1,7 +1,7 @@
 package org.bkr.init;
 
 import org.bkr.conf.Conf;
-import org.bkr.conf.SecurityConf;
+//import org.bkr.conf.SecurityConf;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

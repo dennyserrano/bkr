@@ -2,6 +2,7 @@ package org.bkr.services.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import org.bkr.models.Template;
@@ -26,33 +27,54 @@ public class TemplateServiceImpl implements TemplateService {
 	public Template save(Template t) {
 		
 		
+	
 		if(t.getId()!=null)
-			if(dds.countByTemplateId(t.getId())>0)
-				throw new RuntimeException("Cannot edit template because it is being used in one of the daily sales reports");
-		
-		List<Template> l= tr.findByActive(true);
-		for(Template temp:l)
-		{
-			temp.setActive(false);
-			tr.save(temp);
-		}
-		t.setActive(true);
-		tr.save(t);
-		
-		HashMap<Long, TemplateDetail> nonDeletionMap=nonDeletionMap(new ArrayList<>(t.getTemplateDetails()));
-		
-		if(t.getTemplateDetails()!=null)
-			for(TemplateDetail td: t.getTemplateDetails())
 			{
-				if(nonDeletionMap.get(td.getId())==null)
-					tds.delete(td.getId());
-				else {
-					td.setTemplate(t);
-					tds.save(td);
-				}
+				if(dds.countByTemplateId(t.getId())>0)
+					throw new RuntimeException("Cannot edit template because it is being used in one of the daily sales reports");
+				
+				tds.save(t.getTemplateDetails());
+				
+				HashMap<Long, TemplateDetail> nonDeletionMap=nonDeletionMap(new ArrayList<>(t.getTemplateDetails()));
+				
+				Template fromDbTemplate=tr.fetchFullById(t.getId());
+				
+				if(t.getTemplateDetails()!=null)
+					for(TemplateDetail td: fromDbTemplate.getTemplateDetails())
+					{
+						if(nonDeletionMap.get(td.getId())==null)
+							tds.delete(td.getId());
+						else {
+							td.setTemplate(t);
+							tds.save(td);
+						}
+						
+					}
+				return t;
 				
 			}
-		return t;
+		else
+			{
+				Template currentActive= getActive();
+				if(currentActive!=null)
+				{
+					currentActive.setActive(false);
+					tr.save(currentActive);
+				}
+				t.setActive(true);
+				tr.save(t);
+				
+				t.getTemplateDetails().forEach(e->e.setTemplate(t));
+				
+				tds.save(t.getTemplateDetails());
+				
+				return t;
+			}
+				
+		
+		
+		
+		
 		
 		
 	}
@@ -104,6 +126,12 @@ public class TemplateServiceImpl implements TemplateService {
 		tr.save(t);
 		
 	}
+	
+	@Override
+	public Template getActive() {
+		List<Template> l=tr.findByActive(true);
+		return l.size()==0?null:l.get(0);
+	}
 
 	
 	private HashMap<Long,TemplateDetail> nonDeletionMap(List<TemplateDetail> list)
@@ -114,6 +142,8 @@ public class TemplateServiceImpl implements TemplateService {
 		
 		return hm;
 	}
+
+	
 	
 	
 }

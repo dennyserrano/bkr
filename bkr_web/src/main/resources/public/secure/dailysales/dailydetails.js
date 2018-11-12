@@ -4,28 +4,9 @@ app.controller("dailyDetailsCtrl",function($timeout,$location,$routeParams,$scop
 	var _dictionary={};
 	$scope.date=new Date().getTime();
 	$scope.toastUtility={};
-	
-//	$scope.i=  	{  		    "id": 1,  		    "date": "2018-11-05T09:17:00.000+0000",  		    "total": 30,  		    "expenses": 200,  		    "grandTotal": -170,  		    "remittance": 20000,  		    "difference": 20170,  		    "amRemittance": 10000,  		    "pmRemittance": 10000,  		    "amExpenses": 100,  		    "pmExpenses": 100,  		    "amList": [  		        {  		            "id": 2,  		            "dailyHeaderId": 1,  		            "beginningInv": 5,  		            "production": 5,  		            "endingInv": 5,  		            "tgafs": 10,  		            "sales": 5,  		            "amount": 10,  		            "category": "AM",  		            "templateDetail": {  		                "id": 2,  		                "templateId": 1,  		                "masterBreadId": 2,  		                "breadName": "monay",  		                "price": 2.3,  		                "head": null  		            }  		        },  		        {  		            "id": 4,  		            "dailyHeaderId": 1,  		            "beginningInv": 5,  		            "production": 5,  		            "endingInv": 5,  		            "tgafs": 10,  		            "sales": 5,  		            "amount": 5,  		            "category": "AM",  		            "templateDetail": {  		                "id": 1,  		                "templateId": 1,  		                "masterBreadId": 1,  		                "breadName": "pandesal",  		                "price": 1,  		                "head": null  		            }  		        }  		    ],  		    "pmList": [  		        {  		            "id": 1,  		            "dailyHeaderId": 1,  		            "beginningInv": 5,  		            "production": 5,  		            "endingInv": 5,  		            "tgafs": 10,  		            "sales": 5,  		            "amount": 10,  		            "category": "PM",  		            "templateDetail": {  		                "id": 2,  		                "templateId": 1,  		                "masterBreadId": 2,  		                "breadName": "haha",  		                "price": 2,  		                "head": null  		            }  		        },  		        {  		            "id": 3,  		            "dailyHeaderId": 1,  		            "beginningInv": 5,  		            "production": 5,  		            "endingInv": 5,  		            "tgafs": 10,  		            "sales": 5,  		            "amount": 5,  		            "category": "PM",  		            "templateDetail": {  		                "id": 1,  		                "templateId": 1,  		                "masterBreadId": 1,  		                "breadName": "pandesal",  		                "price": 1,  		                "head": null  		            }  		        }  		    ]  		};
 	$scope.header={};
-	
-	$scope.amHeader={
-			total:0,
-			expenses:100,
-			grandTotal:0,
-			remittance:10000,
-			difference:0,
-			list:[]
-				
-	};
-	
-	$scope.pmHeader={
-			total:0,
-			expenses:0,
-			grandTotal:0,
-			remittance:0,
-			difference:0,
-			list:[]
-	};
+	$scope.amHeader={};
+	$scope.pmHeader={};
 	
 	$scope.tabChange=function(amHeader)
 	{
@@ -52,6 +33,7 @@ app.controller("dailyDetailsCtrl",function($timeout,$location,$routeParams,$scop
 	
 	function here(mainHeader,header,category)
 	{
+		header.category=category.toUpperCase();
 		header.remittance= mainHeader[category+"Remittance"]
 		header.expenses=mainHeader[category+"Expenses"];
 		header.list=transformList(mainHeader[category+"List"]);
@@ -114,8 +96,60 @@ app.controller("dailyDetailsCtrl",function($timeout,$location,$routeParams,$scop
 	}
 	
 	
+	
+	
+	
+	
 	$timeout(function(){
 		$( "#tabs" ).tabs();
+		
+		$(document).ready(function(){
+
+			$(".number").on("blur",function(e){
+				$(this).val(function(index, value) {
+//				    return value
+//				    .replace(/\D/g, "")
+//				    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				    
+					return ReplaceNumberWithCommas(value);
+					
+				  });
+				
+				var val=$(this).val();
+				if(val==='')
+					$(this).val(0);
+				  
+			});
+//				
+				function ReplaceNumberWithCommas(yourNumber) {
+				    //Seperates the components of the number
+				    var components = yourNumber.toString().split(".");
+				    //Comma-fies the first part
+				    components [0] = components [0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				    //Combines the two sections
+				    return components.join(".");
+				}
+					
+					$(".number").focus(function(e){
+						$(this).select();
+					});
+					$(".number").on("keyup",(function(e){
+						if(e.keyCode===13)
+						{
+							var id=$(this).attr("id");
+							if(id===undefined)
+								return;
+							var spl=id.split("_");
+							var prefix=spl[0]+"_"+spl[1]+"_";
+							var index=parseInt(spl[2]);
+							
+							$("#"+prefix+(++index)).focus();
+						}
+					}));
+				
+					
+			});
+		
 	});
 	
 	

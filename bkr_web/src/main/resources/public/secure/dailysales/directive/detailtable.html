@@ -20,11 +20,11 @@
 						<tr ng-repeat="item in head.list | orderBy:'order'">
 							<td>{{item.templateDetail.breadName}}</td>
 							<td>{{item.templateDetail.price | number:2}}</td>
-							<td><input  type="text" class="number form-control" tabindex={{$index}}
+							<td><input id="txt_{{item.category}}_{{$index}}" type="text" class="number form-control" 
 								ng-model="item.beginningInv"></td>
-							<td><input type="number" class="form-control" tabindex=5
+							<td><input id="txt_{{item.category}}_{{head.list.length+$index}}" type="text" class="number form-control" 
 								ng-model="item.production"></td>
-							<td><input type="number" class="form-control" tabindex=10
+							<td><input id="txt_{{item.category}}_{{(head.list.length+2)+$index}}" type="text" class="number form-control" 
 								ng-model="item.endingInv"></td>
 							<td>{{item.tgafs=item.production+item.beginningInv | number}}</td>
 							<td>{{item.sales=item.tgafs-item.endingInv | number}}</td>
@@ -41,7 +41,7 @@
 					</tr>
 					<tr>
 						<td>Expenses:</td>
-						<td><input type="number" style="text-align: right;" tabindex=15 class="form-control" ng-model="head.expenses"></td>
+						<td><input id="txt_{{head.category}}_{{head.list.length*3}}" type="text" style="text-align: right;" tabindex=15 class="number form-control" ng-model="head.expenses"></td>
 					</tr>
 					<tr>
 						<td>Grand Total:</td>
@@ -49,7 +49,7 @@
 					</tr>
 					<tr>
 						<td>Cash Remittance:</td>
-						<td><input type="number" style="text-align: right;" tabindex=20 class="form-control" ng-model="head.remittance"></td>
+						<td><input id="txt_{{head.category}}_{{(head.list.length*3)+1}}" type="text" style="text-align: right;" tabindex=20 class="number form-control" ng-model="head.remittance"></td>
 					</tr>
 					<tr>
 						<td>Difference:</td>

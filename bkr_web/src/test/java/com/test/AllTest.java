@@ -24,6 +24,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.test.builders.DailyHeaderBuilder;
 import com.test.builders.MasterBreadListBuilder;
@@ -47,7 +48,7 @@ public class AllTest {
 		MasterBreadList mbl1=new MasterBreadListBuilder().create(null, "b1", new BigDecimal(1));
 		MasterBreadList mbl2=new MasterBreadListBuilder().create(null, "b2", new BigDecimal(2));
 		mbls.save(mbl1);
-		mbls.save(mbl2);
+//		mbls.save(mbl2);
 		
 	}
 	
@@ -80,6 +81,7 @@ public class AllTest {
 	}
 	
 	@Test
+	@Transactional
 	public void t3()
 	{
 		List<TemplateDetail> l=tds.findByTemplateId(1L);

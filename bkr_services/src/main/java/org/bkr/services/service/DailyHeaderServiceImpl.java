@@ -12,6 +12,7 @@ import org.bkr.services.utilities.DailyHeaderHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DailyHeaderServiceImpl implements DailyHeaderService {
@@ -20,6 +21,7 @@ public class DailyHeaderServiceImpl implements DailyHeaderService {
 	@Autowired DailyDetailRepository ddr;
 	
 	@Override
+	@Transactional
 	public DailyHeader save(DailyHeader dh) {
 		
 		DailyHeaderHelper.align(dh);
@@ -31,6 +33,10 @@ public class DailyHeaderServiceImpl implements DailyHeaderService {
 			{
 				dd.setDailyHeader(dh);
 				ddr.save(dd);
+				
+				if(dd.getId()==2)
+					throw new RuntimeException();
+				
 			}
 		return dh;
 	}

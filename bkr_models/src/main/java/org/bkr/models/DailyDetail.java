@@ -81,7 +81,7 @@ public class DailyDetail implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "template_detail_id")
+	@JoinColumn(name = "template_detail_id")
 	public TemplateDetail getTemplateDetail() {
 		return this.templateDetail;
 	}

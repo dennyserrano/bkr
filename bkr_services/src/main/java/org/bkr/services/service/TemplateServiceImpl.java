@@ -108,7 +108,12 @@ public class TemplateServiceImpl implements TemplateService {
 			throw new RuntimeException("Cannot delete this template because it is being used in one of the daily sales reports");
 		
 		
-		Template t=new Template(id);
+		Template t= tr.findById(id).get();
+		
+		if(t.getTemplateDetails()!=null)
+		for(TemplateDetail td:t.getTemplateDetails())
+			tds.delete(td.getId());
+		
 		tr.delete(t);
 	}
 

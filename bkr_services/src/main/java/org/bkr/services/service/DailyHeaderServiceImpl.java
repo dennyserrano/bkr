@@ -33,10 +33,6 @@ public class DailyHeaderServiceImpl implements DailyHeaderService {
 			{
 				dd.setDailyHeader(dh);
 				ddr.save(dd);
-				
-				if(dd.getId()==2)
-					throw new RuntimeException();
-				
 			}
 		return dh;
 	}

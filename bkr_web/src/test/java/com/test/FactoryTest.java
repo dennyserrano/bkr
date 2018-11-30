@@ -68,6 +68,9 @@ public class FactoryTest {
 		td1=new TemplateDetail(bread1,template);
 		td2=new TemplateDetail(bread2, template);
 		
+		td1.setPrice(new BigDecimal(6));
+		td2.setPrice(new BigDecimal(12));
+		
 		template =new Template();
 		template.setTemplateDetails(new HashSet<>());
 		template.getTemplateDetails().add(td1);
@@ -86,13 +89,14 @@ public class FactoryTest {
 		dailyHeader.setAmRemittance(new BigDecimal(1000));
 		dailyHeader.setPmRemittance(new BigDecimal(2000));
 		
-		DailyDetail dd1=new DailyDetail(1, 2, 3, 4, 5, new BigDecimal(6), "AM");
+		DailyDetail dd1=new DailyDetail(50, 100, 50, 150, 100, new BigDecimal(6), "AM");
 		dd1.setTemplateDetail(td1);
-		DailyDetail dd2=new DailyDetail(1, 2, 3, 4, 5, new BigDecimal(6), "PM");
+		
+		DailyDetail dd2=new DailyDetail(50, 100, 50, 150, 100, new BigDecimal(6), "PM");
 		dd2.setTemplateDetail(td1);
-		DailyDetail dd3=new DailyDetail(7, 8, 9, 10, 11, new BigDecimal(12), "AM");
+		DailyDetail dd3=new DailyDetail(50, 100, 50, 150, 100, new BigDecimal(12), "AM");
 		dd3.setTemplateDetail(td2);
-		DailyDetail dd4=new DailyDetail(7, 8, 9, 10, 11, new BigDecimal(12), "PM");
+		DailyDetail dd4=new DailyDetail(50, 100, 50, 150, 100, new BigDecimal(12), "PM");
 		dd4.setTemplateDetail(td2);
 		
 		dd1.setDailyHeader(dailyHeader);
@@ -141,9 +145,9 @@ public class FactoryTest {
 				al.add(d);
 		}
 		DDetail d1= al.get(0);
-		assertEquals(1, d1.getBeginningInv());
-		assertEquals(2, d1.getProduction());
-		assertEquals(3, d1.getEndingInv());
+		assertEquals(50, d1.getBeginningInv());
+		assertEquals(100, d1.getProduction());
+		assertEquals(50, d1.getEndingInv());
 		
 		String cat=al.get(0).getCategory()+al.get(1).getCategory();
 		
@@ -179,9 +183,9 @@ public class FactoryTest {
 		}
 		
 		DailyDetail d1=al.get(0);
-		assertEquals(1, d1.getBeginningInv());
-		assertEquals(2, d1.getProduction());
-		assertEquals(3, d1.getEndingInv());
+		assertEquals(50, d1.getBeginningInv());
+		assertEquals(100, d1.getProduction());
+		assertEquals(50, d1.getEndingInv());
 		
 		String cat=al.get(0).getCategory()+al.get(1).getCategory();
 		
@@ -194,9 +198,9 @@ public class FactoryTest {
 		DailyHeader d=DailyHeaderHelper.align(dailyHeader);
 		assertEquals(3000, d.getRemittance().intValue());
 		assertEquals(80, d.getExpenses().intValue());
-		assertEquals(36, d.getTotal().intValue());
-		assertEquals(-44, d.getGrandTotal().intValue());
-		assertEquals(3044, d.getDifference().intValue());
+		assertEquals(3600, d.getTotal().intValue());
+		assertEquals(3520, d.getGrandTotal().intValue());
+		assertEquals(-520, d.getDifference().intValue());
 	}
 	
 }

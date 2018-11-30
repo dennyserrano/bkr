@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.bkr.conf.Conf;
+import org.bkr.conf.JpaConf;
 import org.bkr.models.DailyHeader;
 import org.bkr.models.MasterBreadList;
 import org.bkr.models.Template;
@@ -30,7 +31,7 @@ import com.test.builders.DailyHeaderBuilder;
 import com.test.builders.MasterBreadListBuilder;
 import com.test.builders.TemplateBuilder;
 
-@SpringBootTest(classes=Conf.class)
+@SpringBootTest(classes= {Conf.class,JpaConf.class})
 @RunWith(SpringRunner.class)
 public class AllTest {
 
@@ -48,7 +49,7 @@ public class AllTest {
 		MasterBreadList mbl1=new MasterBreadListBuilder().create(null, "b1", new BigDecimal(1));
 		MasterBreadList mbl2=new MasterBreadListBuilder().create(null, "b2", new BigDecimal(2));
 		mbls.save(mbl1);
-//		mbls.save(mbl2);
+		mbls.save(mbl2);
 		
 	}
 	
@@ -81,7 +82,6 @@ public class AllTest {
 	}
 	
 	@Test
-	@Transactional
 	public void t3()
 	{
 		List<TemplateDetail> l=tds.findByTemplateId(1L);

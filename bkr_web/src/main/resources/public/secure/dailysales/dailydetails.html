@@ -1,19 +1,19 @@
 <div class="container" ng-controller="dailyDetailsCtrl">
 	<toast utility="toastUtility"></toast>
-	<div>
-		*try to input letters on number fields
-	</div>
-	<div>
-		*whole number field and floating number field should have separate behaviors
-	</div>
-	<div>
-		*when comma activates then you unfocus then u focus again but this time, select only the last part where you want to type
-	</div>
-	<div>
-		*the value of the ngModel accepts the comma which invalidates the computation. refer to this
-		https://stackoverflow.com/questions/19969740/how-to-intercept-value-binding-by-ng-model-directive
-		it intercepts the ngModel before binding
-	</div>
+<!-- 	<div> -->
+<!-- 		*try to input letters on number fields -->
+<!-- 	</div> -->
+<!-- 	<div> -->
+<!-- 		*whole number field and floating number field should have separate behaviors -->
+<!-- 	</div> -->
+<!-- 	<div> -->
+<!-- 		*when comma activates then you unfocus then u focus again but this time, select only the last part where you want to type -->
+<!-- 	</div> -->
+<!-- 	<div> -->
+<!-- 		*the value of the ngModel accepts the comma which invalidates the computation. refer to this -->
+<!-- 		https://stackoverflow.com/questions/19969740/how-to-intercept-value-binding-by-ng-model-directive -->
+<!-- 		it intercepts the ngModel before binding -->
+<!-- 	</div> -->
 	<div class="row" ng-if="header">
 		<h3>{{date|date:'MMMM dd, yyyy'}}</h3>
 	</div>

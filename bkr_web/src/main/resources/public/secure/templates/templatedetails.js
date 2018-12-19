@@ -1,4 +1,4 @@
-app.controller("templateDetailCtrl",function($scope,$routeParams,$timeout,$location,TemplateService,TemplateDetailService){
+app.controller("templateDetailCtrl",function($scope,$routeParams,$timeout,$location,TemplateService,TemplateDetailService,LoadingModalService){
 	
 	$scope.toastUtility={};
 	$scope.template=
@@ -12,9 +12,11 @@ app.controller("templateDetailCtrl",function($scope,$routeParams,$timeout,$locat
 	
 	$scope.templateSelectSave=function()
 	{
+		LoadingModalService.show();
 		TemplateService.get($scope.selectedTemplate.id,function(response){
 			$scope.template.details=angular.fromJson(angular.toJson(response.details));
 			indexed($scope.template.details);
+			LoadingModalService.hide();
 		},function(response){
 			$scope.toastUtility.fail(response);
 		});

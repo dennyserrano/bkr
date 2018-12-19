@@ -1,12 +1,15 @@
-app.controller("breadListCtrl",function($scope,BreadService,$timeout){
-
+app.controller("breadListCtrl",function($scope,BreadService,$timeout,LoadingModalService){
+	
 	$scope.breadList=[];
 	
 	$scope.toastUtil={};
 	$scope.modalSave=function(){
+		
+		LoadingModalService.show();
 		BreadService.save($scope.breadModel,function(){
 			fetch(function(response){
 				$scope.breadList=response;
+				LoadingModalService.hide();
 				$scope.toastUtil.success("Save Successful!");
 			});
 			
@@ -25,9 +28,11 @@ app.controller("breadListCtrl",function($scope,BreadService,$timeout){
 		var ans=confirm("Are you sure you want to delete this item?");
 		if(ans)
 		{
+			LoadingModalService.show();
 			BreadService.delete(model,function(){
 				fetch(function(response){
 					$scope.breadList=response;
+					LoadingModalService.hide();
 					$scope.toastUtil.success("Delete Successful!");
 				});
 				
@@ -47,10 +52,16 @@ app.controller("breadListCtrl",function($scope,BreadService,$timeout){
 		BreadService.listAll(successCall,failCall);
 	}
 	
+	LoadingModalService.show();
 	fetch(function(response){
 		$scope.breadList=response;
+		LoadingModalService.hide();
 	},function(response){
 		$scope.toastUtility.fail("There was an error while loading data");
 	});
+	
+	
+	
+	
 
 });

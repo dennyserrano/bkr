@@ -1,5 +1,5 @@
 
-app.controller("templateListCtrl",function($scope,$routeParams,$timeout,TemplateService){
+app.controller("templateListCtrl",function($scope,$routeParams,$timeout,TemplateService,LoadingModalService){
 
 	$scope.templates=[];
 	$scope.toastUtility={};
@@ -10,9 +10,11 @@ app.controller("templateListCtrl",function($scope,$routeParams,$timeout,Template
 	
 	$scope.delete=function(template){
 		
+		LoadingModalService.show();
 		TemplateService.delete(template,function(response){
 			fetchAll(function(response){
 				$scope.templates=response;
+				LoadingModalService.hide();
 			},function(response){
 				$scope.toastUtility.fail(response);
 			})
@@ -26,8 +28,10 @@ app.controller("templateListCtrl",function($scope,$routeParams,$timeout,Template
 		TemplateService.listAll(successCall,failCall);
 	}
 	
+	LoadingModalService.show();
 	fetchAll(function(response){
 		$scope.templates=response;
+		LoadingModalService.hide();
 	},function(response){
 		$scope.toastUtility.fail(response);
 	})

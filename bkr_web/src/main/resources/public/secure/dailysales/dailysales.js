@@ -1,4 +1,4 @@
-app.controller("dailyListCtrl",function($scope,$routeParams,$location,$timeout,DailyHeaderService){
+app.controller("dailyListCtrl",function($scope,$routeParams,$location,$timeout,DailyHeaderService,LoadingModalService){
 	
 	$scope.headerList=[];
 	$scope.toastUtility={};
@@ -12,12 +12,15 @@ app.controller("dailyListCtrl",function($scope,$routeParams,$location,$timeout,D
 		
 		if(ans)
 		{
+			LoadingModalService.show();
 			DailyHeaderService.delete(header,function(response){
 				doFetch(function(response){
 					$scope.headerList=response;
 					$scope.toastUtility.success("Delete Successful");
+					LoadingModalService.hide();
 				},function(response){
 					$scope.toastUtility.fail("An error has occurred while trying to delete this item");
+					LoadingModalService.hide();
 				})
 			},function(response){
 				
@@ -30,8 +33,11 @@ app.controller("dailyListCtrl",function($scope,$routeParams,$location,$timeout,D
 	{
 		DailyHeaderService.listAll(successCall,failCall);
 	}
+	
+	LoadingModalService.show();
 	doFetch(function(response){
 		$scope.headerList=response;
+		LoadingModalService.hide();
 	},function(response){
 		$scope.toastUtility.fail("An error has occurred while trying to fetch daily sales summary");
 	})

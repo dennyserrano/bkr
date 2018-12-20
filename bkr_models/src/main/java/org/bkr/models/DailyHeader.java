@@ -39,6 +39,25 @@ public class DailyHeader implements java.io.Serializable {
 	public DailyHeader() {
 	}
 
+	
+	
+	public DailyHeader(BigDecimal total, BigDecimal expenses, BigDecimal grandTotal, BigDecimal remittance,
+			BigDecimal difference, BigDecimal amExpenses, BigDecimal pmExpenses, BigDecimal amRemittance,
+			BigDecimal pmRemittance) {
+		super();
+		this.total = total;
+		this.expenses = expenses;
+		this.grandTotal = grandTotal;
+		this.remittance = remittance;
+		this.difference = difference;
+		this.amExpenses = amExpenses;
+		this.pmExpenses = pmExpenses;
+		this.amRemittance = amRemittance;
+		this.pmRemittance = pmRemittance;
+	}
+
+
+
 	public DailyHeader(Date date) {
 		this.date = date;
 	}
@@ -157,6 +176,14 @@ public class DailyHeader implements java.io.Serializable {
 
 	public void setPmRemittance(BigDecimal pmRemittance) {
 		this.pmRemittance = pmRemittance;
+	}
+
+	@Override
+	public String toString() {
+		return "DailyHeader [id=" + id + ", date=" + date + ", total=" + total + ", expenses=" + expenses
+				+ ", grandTotal=" + grandTotal + ", remittance=" + remittance + ", difference=" + difference
+				+ ", amExpenses=" + amExpenses + ", pmExpenses=" + pmExpenses + ", amRemittance=" + amRemittance
+				+ ", pmRemittance=" + pmRemittance + ", dailyDetails=" + dailyDetails + "]";
 	}
 	
 	

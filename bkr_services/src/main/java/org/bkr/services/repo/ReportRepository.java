@@ -19,7 +19,7 @@ public interface ReportRepository extends CrudRepository<DailyHeader, Long>{
 	
 	@Query("select "
 			+ "new DailyHeader("
-			+ "TIMESTAMP(CONCAT(YEAR(d.date) , '-' , MONTH(d.date) , '-' , DAY(d.date))), "
+			+ "TIMESTAMP(CONCAT(YEAR(d.date) , '-' , MONTH(d.date) , '-' , 1)), "
 			+ "SUM(d.total), "
 			+ "SUM(d.expenses), "
 			+ "SUM(d.grandTotal), "
@@ -32,7 +32,7 @@ public interface ReportRepository extends CrudRepository<DailyHeader, Long>{
 			+ ") "
 			+ "from DailyHeader d "
 			+ "where YEAR(d.date)=?1 "
-			+ "GROUP BY TIMESTAMP(CONCAT(YEAR(d.date) , '-' , MONTH(d.date) , '-' , DAY(d.date))) ")
+			+ "GROUP BY TIMESTAMP(CONCAT(YEAR(d.date) , '-' , MONTH(d.date) , '-' , 1)) ")
 	public List<DailyHeader> headerByYear(int year);
 	
 	

@@ -41,10 +41,11 @@ public class DailyHeader implements java.io.Serializable {
 
 	
 	
-	public DailyHeader(BigDecimal total, BigDecimal expenses, BigDecimal grandTotal, BigDecimal remittance,
+	public DailyHeader(Date date,BigDecimal total, BigDecimal expenses, BigDecimal grandTotal, BigDecimal remittance,
 			BigDecimal difference, BigDecimal amExpenses, BigDecimal pmExpenses, BigDecimal amRemittance,
 			BigDecimal pmRemittance) {
 		super();
+		this.date=date;
 		this.total = total;
 		this.expenses = expenses;
 		this.grandTotal = grandTotal;

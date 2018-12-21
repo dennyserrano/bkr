@@ -1,0 +1,58 @@
+<div ng-if="listSize()!==0">
+	<table class="table table-bordred table-striped">
+		<thead>
+			<th>Month</th>
+			<th>AM Expenses</th>
+			<th>PM Expenses</th>
+			<th>Expenses</th>
+			<th>AM Remittances</th>
+			<th>PM Remittances</th>
+			<th>Remittances</th>
+			<th>Differences</th>
+			<th>Grand Total</th>
+			<th>Total</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in data">
+				<td>{{item.date | date:'MMMM'}}</td>
+				<td>{{item.amExpenses | number:2}}</td>
+				<td>{{item.pmExpenses | number:2}}</td>
+				<td>{{item.expenses | number:2}}</td>
+				<td>{{item.amRemittance | number:2}}</td>
+				<td>{{item.pmRemittance | number:2}}</td>
+				<td>{{item.remittance | number:2}}</td>
+				<td>{{item.difference | number:2}}</td>
+				<td>{{item.grandTotal | number:2}}</td>
+				<td>{{item.total | number:2}}</td>
+			</tr>
+
+		</tbody>
+		<tfoot>
+			<tr>
+				<td></td>
+				<td><span style="font-weight: bold">
+						{{getTotalAmExpenses() | number:2}} </span></td>
+				<td><span style="font-weight: bold">
+						{{getTotalPmExpenses() | number:2}} </span></td>
+				<td><span style="font-weight: bold">
+						{{getTotalExpenses() | number:2}} </span></td>
+				<td><span style="font-weight: bold">
+						{{getTotalAmRemittance() | number:2}} </span></td>
+				<td><span style="font-weight: bold">
+						{{getTotalPmRemittance() | number:2}} </span></td>
+				<td><span style="font-weight: bold">
+						{{getTotalRemittance() | number:2}} </span></td>
+				<td><span style="font-weight: bold">
+						{{getTotalDifference() | number:2}} </span></td>
+				<td><span style="font-weight: bold">
+						{{getTotalGrandTotal() | number:2}} </span></td>
+				<td><span style="font-weight: bold"> {{getTotal() |
+						number:2}} </span></td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+<div ng-if="listSize()===0">
+	No Items to Show
+</div>
+

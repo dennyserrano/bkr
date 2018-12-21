@@ -15,23 +15,11 @@ public interface ReportRepository extends CrudRepository<DailyHeader, Long>{
 	public List<Integer> allYear();
 	
 	@Query("select distinct MONTH(d.date) from DailyHeader d where YEAR(d.date)=?1")
-	public List<Integer> monthsByYear(int year);
+	public List<DailyHeader> monthsByYear(int year);
 	
-//	@Query("select "
-//			+ "SUM(d.amExpenses) AS amExpenses, "
-//			+ "SUM(d.pmExpenses) AS pmExpenses, "
-//			+ "SUM(d.amRemittance), "
-//			+ "SUM(d.pmRemittance), "
-//			+ "SUM(d.difference), "
-//			+ "SUM(d.remittance), "
-//			+ "SUM(d.grandTotal), "
-//			+ "SUM(d.expenses), "
-//			+ "SUM(d.total) "
-//			+ "from DailyHeader d "
-//			+ "where YEAR(d.date)=?1 and "
-//			+ "MONTH(d.date)=?2")
 	@Query("select "
 			+ "new DailyHeader("
+			+ "TIMESTAMP(CONCAT(YEAR(d.date) , '-' , MONTH(d.date) , '-' , DAY(d.date))), "
 			+ "SUM(d.total), "
 			+ "SUM(d.expenses), "
 			+ "SUM(d.grandTotal), "
@@ -43,8 +31,26 @@ public interface ReportRepository extends CrudRepository<DailyHeader, Long>{
 			+ "SUM(d.pmRemittance) "
 			+ ") "
 			+ "from DailyHeader d "
-			+ "where YEAR(d.date)=?1 and "
-			+ "MONTH(d.date)=?2")
-	public List<DailyHeader> m(int year, int month);
+			+ "where YEAR(d.date)=?1 "
+			+ "GROUP BY TIMESTAMP(CONCAT(YEAR(d.date) , '-' , MONTH(d.date) , '-' , DAY(d.date))) ")
+	public List<DailyHeader> headerByYear(int year);
+	
+	
+//	@Query("select "
+//			+ "new DailyHeader("
+//			+ "SUM(d.total), "
+//			+ "SUM(d.expenses), "
+//			+ "SUM(d.grandTotal), "
+//			+ "SUM(d.remittance), "
+//			+ "SUM(d.difference), "
+//			+ "SUM(d.amExpenses), "
+//			+ "SUM(d.pmExpenses), "
+//			+ "SUM(d.amRemittance), "
+//			+ "SUM(d.pmRemittance) "
+//			+ ") "
+//			+ "from DailyHeader d "
+//			+ "where YEAR(d.date)=?1 and "
+//			+ "MONTH(d.date)=?2")
+//	public List<DailyHeader> m(int year, int month);
 	
 }

@@ -20,27 +20,28 @@ public class ReportTest {
 	@Autowired
 	private ReportRepository rr;
 	
-	@Test
-	public void t1()
-	{
-		for(Integer l:rr.allYear())
-			System.out.println(l);
-	}
+//	@Test
+//	public void t1()
+//	{
+//		for(Integer l:rr.allYear())
+//			System.out.println(l);
+//	}
 	
 	@Test
 	public void t2()
 	{
-		for(Integer i:rr.monthsByYear(2018))
+		
+		for(DailyHeader i:rr.headerByYear(2018))
 			System.out.println(i);
 	}
 	
-	@Test
-	public void t3()
-	{
-		for(DailyHeader dh:rr.m(2018,12))
-		{
-			System.out.println(dh);
-		}
-	}
+//	@Test
+//	public void t3()
+//	{
+//		for(DailyHeader dh:rr.m(2018,12))
+//		{
+//			System.out.println(dh);
+//		}
+//	}
 	
 }

@@ -16,4 +16,7 @@ app.config(function($routeProvider) {
     .when("/dailydetails/:id", {
         templateUrl : "../secure/dailysales/dailydetails.html"
     })
+    .when("/summary", {
+        templateUrl : "../secure/summary/summary.html"
+    })
 });

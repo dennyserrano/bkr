@@ -1,0 +1,23 @@
+<div class="container" ng-controller="summaryCtrl">
+
+	<div class="row">
+	
+		<select 
+		ng-model="ddlYear" 
+		title="Pick a number" 
+		ng-change="yearChange()"
+		ng-options="year for year in yearList">
+		</select>
+	
+	</div>
+
+
+	<div class="row">
+		<div class="col-sm6">
+			<summary-table data="data"></summary-table>
+		</div>
+
+	</div>
+
+
+</div>

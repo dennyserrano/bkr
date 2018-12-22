@@ -1,12 +1,26 @@
 app.controller("dailyDetailsCtrl",function($timeout, $location, $routeParams, $scope,BreadService, DailyHeaderService,LoadingModalService) {
 
 		var _dictionary = {};
-		$scope.date = new Date().getTime();
 		$scope.toastUtility = {};
-		$scope.header = {};
+		$scope.header = {
+				date:new Date().getTime()
+		};
 		$scope.amHeader = {};
 		$scope.pmHeader = {};
-
+		
+		$(document).ready(function(){
+			
+			$('#button').datepicker()
+			.on('changeDate', function(ev){
+		        $('#button').datepicker('hide');
+		        $("#hid").val(ev.date.valueOf());
+		        angular.element($("#hid")).triggerHandler('input');
+		        
+		    });
+			
+		})
+		
+		
 		$scope.tabChange = function(amHeader) {
 
 			for (x = 0; x < amHeader.list.length; x++) {
@@ -95,9 +109,9 @@ app.controller("dailyDetailsCtrl",function($timeout, $location, $routeParams, $s
 
 		$timeout(function() {
 
-			$("#tabs").tabs();
+			
 			$(document).ready(function(){
-				
+				$("#tabs").tabs();
 //							([1-9](,\d{3})*|[1-9]\d{2}(,\d{3})*)
 				$(".number").on("keydown", (function(e) {
 

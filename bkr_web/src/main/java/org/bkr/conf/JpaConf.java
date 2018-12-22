@@ -41,7 +41,7 @@ public class JpaConf {
 			
 			Properties jpaProterties = new Properties();
 		     jpaProterties.put(PROPERTY_NAME_HIBERNATE_DIALECT, "org.hibernate.dialect.MySQL5InnoDBDialect");
-		     jpaProterties.put(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO, "create");
+//		     jpaProterties.put(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO, "create");
 		     jpaProterties.put(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY, "org.hibernate.cfg.ImprovedNamingStrategy");
 		     jpaProterties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, true);
 			

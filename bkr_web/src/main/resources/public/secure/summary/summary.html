@@ -1,14 +1,15 @@
 <div class="container" ng-controller="summaryCtrl">
 
 	<div class="row">
-	
-		<select 
-		ng-model="ddlYear" 
-		title="Pick a number" 
-		ng-change="yearChange()"
-		ng-options="year for year in yearList">
-		</select>
-	
+
+<!-- 		<select ng-model="ddlYear" title="Pick a number" -->
+<!-- 			ng-change="yearChange()" ng-options="year for year in yearList"> -->
+<!-- 		</select> -->
+
+		<md-select ng-model="ddlYear" placeholder="Year" ng-change="yearChange()">
+		<md-option ng-value="year" ng-repeat="year in yearList">{{
+		year }}</md-option> </md-select>
+
 	</div>
 
 

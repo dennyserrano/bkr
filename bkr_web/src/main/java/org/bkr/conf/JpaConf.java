@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -31,6 +32,8 @@ public class JpaConf {
 	
 	    @Autowired DataSourceProperties dp;
 	    
+	    @Autowired Environment e;
+	    
 		@Bean
 	    public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
 	      
@@ -38,12 +41,15 @@ public class JpaConf {
 			entityManagerFactoryBean.setDataSource(dataSource());
 			entityManagerFactoryBean.setPackagesToScan("org.bkr.models");
 			entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-			
 			Properties jpaProterties = new Properties();
-		     jpaProterties.put(PROPERTY_NAME_HIBERNATE_DIALECT, "org.hibernate.dialect.MySQL5InnoDBDialect");
-		     jpaProterties.put(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO, "create");
+		     jpaProterties.put(PROPERTY_NAME_HIBERNATE_DIALECT, e.getProperty("spring.jpa.properties.hibernate.dialect"));
+		     
+		     String ddlAuto=e.getProperty("spring.jpa.hibernate.ddl-auto");
+		     
+		     if(ddlAuto!=null || !ddlAuto.isEmpty())
+		    	 jpaProterties.put(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO, ddlAuto);
 		     jpaProterties.put(PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY, "org.hibernate.cfg.ImprovedNamingStrategy");
-		     jpaProterties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, true);
+		     jpaProterties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, Boolean.valueOf(e.getProperty("spring.jpa.show-sql")));
 			
 			entityManagerFactoryBean.setJpaProperties(jpaProterties);
 			return entityManagerFactoryBean;

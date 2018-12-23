@@ -58,6 +58,11 @@ public class JpaConf {
 		@Bean
 		public DataSource dataSource()
 		{
+			
+			System.out.println("***************");
+			System.out.println("DB URL:"+dp.getUrl());
+			System.out.println("***************");
+			
 			return DataSourceBuilder.create()
 					.driverClassName(dp.getDriverClassName())
 					.username(dp.getUsername())

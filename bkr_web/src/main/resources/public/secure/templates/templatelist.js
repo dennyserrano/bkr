@@ -10,17 +10,22 @@ app.controller("templateListCtrl",function($scope,$routeParams,$timeout,Template
 	
 	$scope.delete=function(template){
 		
-		LoadingModalService.show();
-		TemplateService.delete(template,function(response){
-			fetchAll(function(response){
-				$scope.templates=response;
-				LoadingModalService.hide();
+		var ans=confirm("Are you sure you want to delete this record?");
+		if(ans)
+		{
+			LoadingModalService.show();
+			TemplateService.delete(template,function(response){
+				fetchAll(function(response){
+					$scope.templates=response;
+					LoadingModalService.hide();
+				},function(response){
+					$scope.toastUtility.fail(response);
+				})
 			},function(response){
 				$scope.toastUtility.fail(response);
-			})
-		},function(response){
-			$scope.toastUtility.fail(response);
-		});
+			});
+		}
+		
 	}
 	
 	function fetchAll(successCall,failCall)

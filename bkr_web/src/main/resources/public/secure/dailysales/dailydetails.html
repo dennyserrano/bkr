@@ -27,27 +27,28 @@
 		<h3>{{header.date|date:'MMMM dd, yyyy'}}</h3>
 		<md-datepicker ng-model="header.date"></md-datepicker>
 	</div>
-	<div id="tabs" class="row" ng-if="header">
-		<div>
-			<ul>
-				<li><a href="#am">AM</a></li>
-				<li><a href="#pm" ng-click="tabChange(amHeader)">PM</a></li>
-
-			</ul>
-
-			<div id="am">
-				<h3 align="right">AM</h3>
-				<detail-table  head="amHeader" ></detail-table>
-
-			</div>
-			<div id="pm">
-				<h3 align="right">PM</h3>
-				<detail-table  head="pmHeader"></detail-table>
-			</div>
-		</div>
-
-
-	</div>
+	
+	<md-tabs md-dynamic-height="true">
+	  <md-tab label="A">
+	  	<md-tab-label>
+	  		<h3>AM</h3>
+	  	</md-tab-label>
+	  	<md-tab-body>
+	  		<detail-table  head="amHeader" ></detail-table>
+	  	</md-tab-body>
+	  	 
+	  </md-tab>
+	  <md-tab >
+	  	<md-tab-label>
+	  		<h3>PM</h3>
+	  	</md-tab-label>
+	  	<md-tab-body>
+	  		<detail-table  head="pmHeader"></detail-table>
+	  	</md-tab-body>
+	  	
+	  </md-tab>
+	</md-tabs>
+	
 	<div class="row">
 		<div class="col">&nbsp</div>
 	</div>

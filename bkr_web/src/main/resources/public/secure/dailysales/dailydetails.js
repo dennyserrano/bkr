@@ -94,70 +94,78 @@ app.controller("dailyDetailsCtrl",function($timeout, $location, $routeParams, $s
 							});
 		}
 
-		$timeout(function() {
-
-			
-			$(document).ready(function(){
-				$("#tabs").tabs();	
-//							([1-9](,\d{3})*|[1-9]\d{2}(,\d{3})*)
-				$(".number").on("keydown", (function(e) {
-
-					var valid = false;
-
-					valid |= (e.keyCode >= 48 && e.keyCode <= 57)
-					valid |= (e.keyCode >= 96 && e.keyCode <= 105)
-					valid |= (e.keyCode>=37 && e.keyCode<=40)
-					valid |=e.keyCode===8;
-					
-					if (!valid)
-						e.preventDefault();
-
-					if (e.keyCode === 13) {
-						var id = $(this).attr("id");
-						if (id === undefined)
-							return;
-						var spl = id.split("_");
-						var prefix = spl[0] + "_" + spl[1] + "_";
-						var index = parseInt(spl[2]);
-
-						$("#" + prefix + (++index)).focus();
-					}
-
-				}));
-
-				$(".number").focus(function(e) {
-					$(this).select();
-				});
-
-				$(".number").on("blur", function(e) {
-					$(this).val(function(index, value) {
-						// return value
-						// .replace(/\D/g, "")
-						// .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-						return ReplaceNumberWithCommas(value);
-
-					});
-
-					var val = $(this).val();
-					if (val === '')
-						$(this).val(0);
-					
-					
-					function ReplaceNumberWithCommas(yourNumber) {
-					    //Seperates the components of the number
-					    var components = yourNumber.toString().split(".");
-					    //Comma-fies the first part
-					    components [0] = components [0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-					    //Combines the two sections
-					    return components.join(".");
-					}
-
-				});
-				
-			})
-
-		});
+//		$timeout(function() {
+//
+//			
+//			$(document).ready(function(){
+//				
+//				$("#tabs").ready(function(){
+//					
+//					$("#tabs").tabs();	
+//			//					([1-9](,\d{3})*|[1-9]\d{2}(,\d{3})*)
+//					$(".number").on("keydown", (function(e) {
+//			
+//						var valid = false;
+//			
+//						valid |= (e.keyCode >= 48 && e.keyCode <= 57)
+//						valid |= (e.keyCode >= 96 && e.keyCode <= 105)
+//						valid |= (e.keyCode>=37 && e.keyCode<=40)
+//						valid |=e.keyCode===8;
+//						
+//						if (!valid)
+//							e.preventDefault();
+//			
+//						if (e.keyCode === 13) {
+//							var id = $(this).attr("id");
+//							if (id === undefined)
+//								return;
+//							var spl = id.split("_");
+//							var prefix = spl[0] + "_" + spl[1] + "_";
+//							var index = parseInt(spl[2]);
+//			
+//							$("#" + prefix + (++index)).focus();
+//						}
+//			
+//					}));
+//			
+//					$(".number").focus(function(e) {
+//						$(this).select();
+//					});
+//			
+//					$(".number").on("blur", function(e) {
+//						$(this).val(function(index, value) {
+//							// return value
+//							// .replace(/\D/g, "")
+//							// .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+//			
+//							return ReplaceNumberWithCommas(value);
+//			
+//						});
+//			
+//						var val = $(this).val();
+//						if (val === '')
+//							$(this).val(0);
+//						
+//						
+//						function ReplaceNumberWithCommas(yourNumber) {
+//						    //Seperates the components of the number
+//						    var components = yourNumber.toString().split(".");
+//						    //Comma-fies the first part
+//						    components [0] = components [0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+//						    //Combines the two sections
+//						    return components.join(".");
+//						}
+//			
+//					});
+//					
+//					
+//				});
+//				
+//				
+//				
+//			})
+//
+//		});
 		
 		
 		
